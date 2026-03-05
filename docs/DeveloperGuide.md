@@ -445,7 +445,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2.  Should be able to hold up to 1000 customers without a noticeable sluggishness in performance for typical usage.
+2.  Should be able to hold up to 1000 orders without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4.  All data should be stored locally and persisted automatically, so that customer and order information remains available after restarting the application.
 5.  The application should not require an internet connection for normal operation.
