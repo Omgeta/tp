@@ -1,7 +1,13 @@
 package seedu.homechef.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.homechef.logic.parser.CliSyntax.*;
+import static seedu.homechef.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.homechef.logic.parser.CliSyntax.PREFIX_DATE;
+import static seedu.homechef.logic.parser.CliSyntax.PREFIX_DISH;
+import static seedu.homechef.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.homechef.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.homechef.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.homechef.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.homechef.model.Model.PREDICATE_SHOW_ALL_ORDERS;
 
 import java.util.Collections;
@@ -17,7 +23,13 @@ import seedu.homechef.commons.util.ToStringBuilder;
 import seedu.homechef.logic.Messages;
 import seedu.homechef.logic.commands.exceptions.CommandException;
 import seedu.homechef.model.Model;
-import seedu.homechef.model.order.*;
+import seedu.homechef.model.order.Address;
+import seedu.homechef.model.order.Date;
+import seedu.homechef.model.order.Dish;
+import seedu.homechef.model.order.Email;
+import seedu.homechef.model.order.Name;
+import seedu.homechef.model.order.Order;
+import seedu.homechef.model.order.Phone;
 import seedu.homechef.model.tag.Tag;
 
 /**
@@ -97,7 +109,8 @@ public class EditCommand extends Command {
         Date updatedDate = editOrderDescriptor.getDate().orElse(orderToEdit.getDate());
         Set<Tag> updatedTags = editOrderDescriptor.getTags().orElse(orderToEdit.getTags());
 
-        return new Order(updatedDish, updatedName, updatedPhone, updatedEmail, updatedAddress, updatedDate, updatedTags);
+        return new Order(updatedDish, updatedName, updatedPhone,
+                updatedEmail, updatedAddress, updatedDate, updatedTags);
     }
 
     @Override
