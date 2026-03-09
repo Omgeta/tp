@@ -56,7 +56,7 @@ public class Date {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof Dish)) {
+        if (!(other instanceof Date)) {
             return false;
         }
 

@@ -37,7 +37,7 @@ public class OrderBuilder {
      * Creates a {@code OrderBuilder} with the default details.
      */
     public OrderBuilder() {
-        dish = new  Dish(DEFAULT_DISH);
+        dish = new Dish(DEFAULT_DISH);
         name = new Name(DEFAULT_NAME);
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
@@ -78,7 +78,7 @@ public class OrderBuilder {
     /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Order} that we are building.
      */
-    public OrderBuilder withTags(String ... tags) {
+    public OrderBuilder withTags(String... tags) {
         this.tags = SampleDataUtil.getTagSet(tags);
         return this;
     }

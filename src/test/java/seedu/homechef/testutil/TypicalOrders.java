@@ -1,5 +1,20 @@
 package seedu.homechef.testutil;
 
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_DATE_AMY;
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_DATE_BOB;
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_DISH_AMY;
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_DISH_BOB;
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_NAME_AMY;
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,7 +22,6 @@ import java.util.List;
 import seedu.homechef.model.HomeChef;
 import seedu.homechef.model.order.Order;
 
-import static seedu.homechef.logic.commands.CommandTestUtil.*;
 
 /**
  * A utility class containing a list of {@code Order} objects to be used in tests.
@@ -21,7 +35,7 @@ public class TypicalOrders {
             .withTags("friends").build();
     public static final Order BENSON = new OrderBuilder().withDish("Sourdough Bread").withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25")
-            .withDate("31-03-2026")
+            .withDate("26-03-2026")
             .withEmail("johnd@example.com").withPhone("98765432")
             .withTags("owesMoney", "friends").build();
     public static final Order CARL = new OrderBuilder().withDish("Cupcakes (24pcs)").withName("Carl Kurz")
