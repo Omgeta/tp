@@ -5,8 +5,8 @@ import static seedu.homechef.logic.Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDE
 import static seedu.homechef.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.homechef.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.homechef.logic.commands.CommandTestUtil.DATE_DESC_AMY;
-import static seedu.homechef.logic.commands.CommandTestUtil.DISH_DESC_AMY;
 import static seedu.homechef.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
+import static seedu.homechef.logic.commands.CommandTestUtil.FOOD_DESC_AMY;
 import static seedu.homechef.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.homechef.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.homechef.testutil.Assert.assertThrows;
@@ -172,7 +172,7 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage);
 
         // Triggers the saveHomeChef method by executing an add command
-        String addCommand = AddCommand.COMMAND_WORD + DISH_DESC_AMY + NAME_DESC_AMY + PHONE_DESC_AMY
+        String addCommand = AddCommand.COMMAND_WORD + FOOD_DESC_AMY + NAME_DESC_AMY + PHONE_DESC_AMY
                 + EMAIL_DESC_AMY + ADDRESS_DESC_AMY + DATE_DESC_AMY;
         Order expectedOrder = new OrderBuilder(AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();

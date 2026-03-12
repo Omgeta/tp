@@ -70,8 +70,8 @@ public class OrderTest {
         // different order -> returns false
         assertFalse(ALICE.equals(BOB));
 
-        // different dish -> returns false
-        Order editedAlice = new OrderBuilder(ALICE).withDish(VALID_NAME_BOB).build();
+        // different food -> returns false
+        Order editedAlice = new OrderBuilder(ALICE).withFood(VALID_NAME_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different name -> returns false
@@ -101,7 +101,7 @@ public class OrderTest {
 
     @Test
     public void toStringMethod() {
-        String expected = Order.class.getCanonicalName() + "{dish=" + ALICE.getDish() + ", name=" + ALICE.getName()
+        String expected = Order.class.getCanonicalName() + "{food=" + ALICE.getFood() + ", name=" + ALICE.getName()
                 + ", phone=" + ALICE.getPhone() + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress()
                 + ", date=" + ALICE.getDate() + ", dietTags=" + ALICE.getTags() + "}";
         assertEquals(expected, ALICE.toString());

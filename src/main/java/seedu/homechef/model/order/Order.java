@@ -17,7 +17,7 @@ import seedu.homechef.model.tag.DietTag;
 public class Order {
 
     // Identity fields
-    private final Dish dish;
+    private final Food food;
     private final Name name;
     private final Phone phone;
     private final Email email;
@@ -30,9 +30,9 @@ public class Order {
     /**
      * Every field must be present and not null.
      */
-    public Order(Dish dish, Name name, Phone phone, Email email, Address address, Date date, Set<DietTag> dietTags) {
-        requireAllNonNull(dish, name, phone, email, address, dietTags);
-        this.dish = dish;
+    public Order(Food food, Name name, Phone phone, Email email, Address address, Date date, Set<DietTag> dietTags) {
+        requireAllNonNull(food, name, phone, email, address, dietTags);
+        this.food = food;
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -41,7 +41,9 @@ public class Order {
         this.dietTags.addAll(dietTags);
     }
 
-    public Dish getDish() { return dish; }
+    public Food getFood() {
+        return food;
+    }
 
     public Name getName() {
         return name;
@@ -72,7 +74,7 @@ public class Order {
     }
 
     /**
-     * Returns true if both orders have the same name, dish and date.
+     * Returns true if both orders have the same name, food and date.
      * This defines a weaker notion of equality between two orders.
      */
     public boolean isSameOrder(Order otherOrder) {
@@ -82,7 +84,7 @@ public class Order {
 
         return otherOrder != null
                 && otherOrder.getName().equals(getName())
-                && otherOrder.getDish().equals(getDish())
+                && otherOrder.getFood().equals(getFood())
                 && otherOrder.getDate().equals(getDate());
     }
 
@@ -102,7 +104,7 @@ public class Order {
         }
 
         Order otherOrder = (Order) other;
-        return dish.equals(otherOrder.dish)
+        return food.equals(otherOrder.food)
                 && name.equals(otherOrder.name)
                 && phone.equals(otherOrder.phone)
                 && email.equals(otherOrder.email)
@@ -114,13 +116,13 @@ public class Order {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(dish, name, phone, email, address, date, dietTags);
+        return Objects.hash(food, name, phone, email, address, date, dietTags);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("dish", dish)
+                .add("food", food)
                 .add("name", name)
                 .add("phone", phone)
                 .add("email", email)

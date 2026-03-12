@@ -26,7 +26,7 @@ public class JsonAdaptedOrderTest {
     private static final String INVALID_DATE = "2020-13-01";
     private static final String INVALID_TAG = "#friend";
 
-    private static final String VALID_DISH = BENSON.getDish().toString();
+    private static final String VALID_DISH = BENSON.getFood().toString();
     private static final String VALID_NAME = BENSON.getName().toString();
     private static final String VALID_PHONE = BENSON.getPhone().toString();
     private static final String VALID_EMAIL = BENSON.getEmail().toString();
