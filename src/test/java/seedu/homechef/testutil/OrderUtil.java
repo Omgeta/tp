@@ -2,8 +2,8 @@ package seedu.homechef.testutil;
 
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_DATE;
-import static seedu.homechef.logic.parser.CliSyntax.PREFIX_DISH;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.homechef.logic.parser.CliSyntax.PREFIX_FOOD;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_TAG;
@@ -32,7 +32,7 @@ public class OrderUtil {
      */
     public static String getOrderDetails(Order order) {
         StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_DISH + order.getDish().dishName + " ");
+        sb.append(PREFIX_FOOD + order.getFood().foodName + " ");
         sb.append(PREFIX_NAME + order.getName().fullName + " ");
         sb.append(PREFIX_PHONE + order.getPhone().value + " ");
         sb.append(PREFIX_EMAIL + order.getEmail().value + " ");
@@ -49,7 +49,7 @@ public class OrderUtil {
      */
     public static String getEditOrderDescriptorDetails(EditOrderDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
-        descriptor.getDish().ifPresent(dish -> sb.append(PREFIX_DISH).append(dish.dishName).append(" "));
+        descriptor.getFood().ifPresent(food -> sb.append(PREFIX_FOOD).append(food.foodName).append(" "));
         descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
         descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));

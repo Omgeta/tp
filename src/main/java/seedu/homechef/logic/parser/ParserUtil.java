@@ -11,8 +11,8 @@ import seedu.homechef.commons.util.StringUtil;
 import seedu.homechef.logic.parser.exceptions.ParseException;
 import seedu.homechef.model.order.Address;
 import seedu.homechef.model.order.Date;
-import seedu.homechef.model.order.Dish;
 import seedu.homechef.model.order.Email;
+import seedu.homechef.model.order.Food;
 import seedu.homechef.model.order.Name;
 import seedu.homechef.model.order.Phone;
 import seedu.homechef.model.tag.DietTag;
@@ -38,18 +38,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String dishName} into a {@code Dish}.
+     * Parses a {@code String foodName} into a {@code Food}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code dishName} is invalid.
+     * @throws ParseException if the given {@code foodName} is invalid.
      */
-    public static Dish parseDish(String dishName) throws ParseException {
-        requireNonNull(dishName);
-        String trimmedName = dishName.trim();
-        if (!Dish.isValidDish(trimmedName)) {
-            throw new ParseException(Dish.MESSAGE_CONSTRAINTS);
+    public static Food parseFood(String foodName) throws ParseException {
+        requireNonNull(foodName);
+        String trimmedName = foodName.trim();
+        if (!Food.isValidFood(trimmedName)) {
+            throw new ParseException(Food.MESSAGE_CONSTRAINTS);
         }
-        return new Dish(trimmedName);
+        return new Food(trimmedName);
     }
 
     /**

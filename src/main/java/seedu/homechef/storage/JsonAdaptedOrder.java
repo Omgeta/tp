@@ -12,8 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.homechef.commons.exceptions.IllegalValueException;
 import seedu.homechef.model.order.Address;
 import seedu.homechef.model.order.Date;
-import seedu.homechef.model.order.Dish;
 import seedu.homechef.model.order.Email;
+import seedu.homechef.model.order.Food;
 import seedu.homechef.model.order.Name;
 import seedu.homechef.model.order.Order;
 import seedu.homechef.model.order.Phone;
@@ -57,7 +57,7 @@ class JsonAdaptedOrder {
      * Converts a given {@code Order} into this class for Jackson use.
      */
     public JsonAdaptedOrder(Order source) {
-        dish = source.getDish().dishName;
+        dish = source.getFood().foodName;
         name = source.getName().fullName;
         phone = source.getPhone().value;
         email = source.getEmail().value;
@@ -80,12 +80,12 @@ class JsonAdaptedOrder {
         }
 
         if (dish == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Dish.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Food.class.getSimpleName()));
         }
-        if (!Dish.isValidDish(dish)) {
-            throw new IllegalValueException(Dish.MESSAGE_CONSTRAINTS);
+        if (!Food.isValidFood(dish)) {
+            throw new IllegalValueException(Food.MESSAGE_CONSTRAINTS);
         }
-        final Dish modelDish = new Dish(dish);
+        final Food modelFood = new Food(dish);
 
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
@@ -128,7 +128,7 @@ class JsonAdaptedOrder {
         final Date modelDate = new Date(date);
 
         final Set<DietTag> modelDietTags = new HashSet<>(orderDietTags);
-        return new Order(modelDish, modelName, modelPhone, modelEmail, modelAddress, modelDate, modelDietTags);
+        return new Order(modelFood, modelName, modelPhone, modelEmail, modelAddress, modelDate, modelDietTags);
     }
 
 }

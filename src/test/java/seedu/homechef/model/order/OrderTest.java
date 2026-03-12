@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.homechef.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.homechef.logic.commands.CommandTestUtil.VALID_DATE_BOB;
 import static seedu.homechef.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_FOOD_BOB;
 import static seedu.homechef.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.homechef.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.homechef.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
@@ -33,7 +34,7 @@ public class OrderTest {
         // null -> returns false
         assertFalse(ALICE.isSameOrder(null));
 
-        // same name, all other attributes different -> returns true
+        // same name, food and date; other attributes different -> returns true
         Order editedAlice = new OrderBuilder(ALICE).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB)
                 .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
         assertTrue(ALICE.isSameOrder(editedAlice));
@@ -50,6 +51,14 @@ public class OrderTest {
         String nameWithTrailingSpaces = VALID_NAME_BOB + " ";
         editedBob = new OrderBuilder(BOB).withName(nameWithTrailingSpaces).build();
         assertFalse(BOB.isSameOrder(editedBob));
+
+        // different food, same name and date -> returns false
+        editedAlice = new OrderBuilder(ALICE).withFood(VALID_FOOD_BOB).build();
+        assertFalse(ALICE.isSameOrder(editedAlice));
+
+        // same name and food, different date -> returns false
+        editedAlice = new OrderBuilder(ALICE).withDate(VALID_DATE_BOB).build();
+        assertFalse(ALICE.isSameOrder(editedAlice));
     }
 
     @Test
@@ -70,8 +79,8 @@ public class OrderTest {
         // different order -> returns false
         assertFalse(ALICE.equals(BOB));
 
-        // different dish -> returns false
-        Order editedAlice = new OrderBuilder(ALICE).withDish(VALID_NAME_BOB).build();
+        // different food -> returns false
+        Order editedAlice = new OrderBuilder(ALICE).withFood(VALID_NAME_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different name -> returns false
@@ -101,7 +110,7 @@ public class OrderTest {
 
     @Test
     public void toStringMethod() {
-        String expected = Order.class.getCanonicalName() + "{dish=" + ALICE.getDish() + ", name=" + ALICE.getName()
+        String expected = Order.class.getCanonicalName() + "{food=" + ALICE.getFood() + ", name=" + ALICE.getName()
                 + ", phone=" + ALICE.getPhone() + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress()
                 + ", date=" + ALICE.getDate() + ", dietTags=" + ALICE.getTags() + "}";
         assertEquals(expected, ALICE.toString());

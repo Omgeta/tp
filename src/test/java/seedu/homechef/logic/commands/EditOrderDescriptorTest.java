@@ -6,7 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.homechef.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.homechef.logic.commands.CommandTestUtil.DESC_BOB;
 import static seedu.homechef.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_DATE_BOB;
 import static seedu.homechef.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_FOOD_AMY;
+import static seedu.homechef.logic.commands.CommandTestUtil.VALID_FOOD_BOB;
 import static seedu.homechef.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.homechef.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.homechef.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
@@ -55,13 +58,26 @@ public class EditOrderDescriptorTest {
         // different tags -> returns false
         editedAmy = new EditOrderDescriptorBuilder(DESC_AMY).withTags(VALID_TAG_HUSBAND).build();
         assertFalse(DESC_AMY.equals(editedAmy));
+
+        // different food (both non-null) -> returns false
+        EditOrderDescriptor amyWithFood = new EditOrderDescriptorBuilder(DESC_AMY).withFood(VALID_FOOD_AMY).build();
+        editedAmy = new EditOrderDescriptorBuilder(DESC_AMY).withFood(VALID_FOOD_BOB).build();
+        assertFalse(amyWithFood.equals(editedAmy));
+
+        // same food (both non-null) -> returns true
+        EditOrderDescriptor amyWithFoodCopy = new EditOrderDescriptorBuilder(DESC_AMY).withFood(VALID_FOOD_AMY).build();
+        assertTrue(amyWithFood.equals(amyWithFoodCopy));
+
+        // different date -> returns false
+        editedAmy = new EditOrderDescriptorBuilder(DESC_AMY).withDate(VALID_DATE_BOB).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
     }
 
     @Test
     public void toStringMethod() {
         EditOrderDescriptor editOrderDescriptor = new EditOrderDescriptor();
-        String expected = EditOrderDescriptor.class.getCanonicalName() + "{dish="
-                + editOrderDescriptor.getDish().orElse(null) + ", name="
+        String expected = EditOrderDescriptor.class.getCanonicalName() + "{food="
+                + editOrderDescriptor.getFood().orElse(null) + ", name="
                 + editOrderDescriptor.getName().orElse(null) + ", phone="
                 + editOrderDescriptor.getPhone().orElse(null) + ", email="
                 + editOrderDescriptor.getEmail().orElse(null) + ", address="

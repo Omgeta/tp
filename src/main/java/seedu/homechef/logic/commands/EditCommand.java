@@ -3,8 +3,8 @@ package seedu.homechef.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_DATE;
-import static seedu.homechef.logic.parser.CliSyntax.PREFIX_DISH;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.homechef.logic.parser.CliSyntax.PREFIX_FOOD;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_TAG;
@@ -25,8 +25,8 @@ import seedu.homechef.logic.commands.exceptions.CommandException;
 import seedu.homechef.model.Model;
 import seedu.homechef.model.order.Address;
 import seedu.homechef.model.order.Date;
-import seedu.homechef.model.order.Dish;
 import seedu.homechef.model.order.Email;
+import seedu.homechef.model.order.Food;
 import seedu.homechef.model.order.Name;
 import seedu.homechef.model.order.Order;
 import seedu.homechef.model.order.Phone;
@@ -43,7 +43,7 @@ public class EditCommand extends Command {
             + "by the index number used in the displayed order list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_DISH + "DISH] "
+            + "[" + PREFIX_FOOD + "FOOD] "
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
@@ -101,7 +101,7 @@ public class EditCommand extends Command {
     private static Order createEditedOrder(Order orderToEdit, EditOrderDescriptor editOrderDescriptor) {
         assert orderToEdit != null;
 
-        Dish updatedDish = editOrderDescriptor.getDish().orElse(orderToEdit.getDish());
+        Food updatedFood = editOrderDescriptor.getFood().orElse(orderToEdit.getFood());
         Name updatedName = editOrderDescriptor.getName().orElse(orderToEdit.getName());
         Phone updatedPhone = editOrderDescriptor.getPhone().orElse(orderToEdit.getPhone());
         Email updatedEmail = editOrderDescriptor.getEmail().orElse(orderToEdit.getEmail());
@@ -109,7 +109,7 @@ public class EditCommand extends Command {
         Date updatedDate = editOrderDescriptor.getDate().orElse(orderToEdit.getDate());
         Set<DietTag> updatedDietTags = editOrderDescriptor.getTags().orElse(orderToEdit.getTags());
 
-        return new Order(updatedDish, updatedName, updatedPhone,
+        return new Order(updatedFood, updatedName, updatedPhone,
                 updatedEmail, updatedAddress, updatedDate, updatedDietTags);
     }
 
@@ -142,7 +142,7 @@ public class EditCommand extends Command {
      * corresponding field value of the order.
      */
     public static class EditOrderDescriptor {
-        private Dish dish;
+        private Food food;
         private Name name;
         private Phone phone;
         private Email email;
@@ -158,7 +158,7 @@ public class EditCommand extends Command {
          * A defensive copy of {@code dietTags} is used internally.
          */
         public EditOrderDescriptor(EditOrderDescriptor toCopy) {
-            setDish(toCopy.dish);
+            setFood(toCopy.food);
             setName(toCopy.name);
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
@@ -171,15 +171,15 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(dish, name, phone, email, address, date, dietTags);
+            return CollectionUtil.isAnyNonNull(food, name, phone, email, address, date, dietTags);
         }
 
-        public void setDish(Dish dish) {
-            this.dish = dish;
+        public void setFood(Food food) {
+            this.food = food;
         }
 
-        public Optional<Dish> getDish() {
-            return Optional.ofNullable(dish);
+        public Optional<Food> getFood() {
+            return Optional.ofNullable(food);
         }
 
         public void setName(Name name) {
@@ -251,7 +251,7 @@ public class EditCommand extends Command {
             }
 
             EditOrderDescriptor otherEditOrderDescriptor = (EditOrderDescriptor) other;
-            return Objects.equals(dish, otherEditOrderDescriptor.dish)
+            return Objects.equals(food, otherEditOrderDescriptor.food)
                     && Objects.equals(name, otherEditOrderDescriptor.name)
                     && Objects.equals(phone, otherEditOrderDescriptor.phone)
                     && Objects.equals(email, otherEditOrderDescriptor.email)
@@ -263,7 +263,7 @@ public class EditCommand extends Command {
         @Override
         public String toString() {
             return new ToStringBuilder(this)
-                    .add("dish", dish)
+                    .add("food", food)
                     .add("name", name)
                     .add("phone", phone)
                     .add("email", email)
