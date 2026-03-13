@@ -83,7 +83,8 @@ public class EditOrderDescriptorTest {
                 + editOrderDescriptor.getEmail().orElse(null) + ", address="
                 + editOrderDescriptor.getAddress().orElse(null) + ", date="
                 + editOrderDescriptor.getDate().orElse(null) + ", dietTags="
-                + editOrderDescriptor.getTags().orElse(null) + "}";
+                + editOrderDescriptor.getTags().orElse(null)
+                + ", paymentInfo=" + editOrderDescriptor.getPaymentInfo().orElse(null) + "}";
         assertEquals(expected, editOrderDescriptor.toString());
     }
 }
