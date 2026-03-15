@@ -43,6 +43,8 @@ public class OrderCard extends UiPart<Region> {
     @FXML
     private Label email;
     @FXML
+    private Label paymentStatus;
+    @FXML
     private FlowPane dietTags;
 
     /**
