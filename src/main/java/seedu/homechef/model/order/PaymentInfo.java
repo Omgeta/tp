@@ -13,6 +13,8 @@ public class PaymentInfo {
 
     public static final String MESSAGE_INVALID_PAYNOW =
             "PayNow payment requires a non-blank handle (phone number or UEN).";
+    public static final String MESSAGE_INVALID_PAYNOW_PHONE =
+            "PayNow phone number must separate the country code with a space (e.g. +65 91234567).";
     public static final String MESSAGE_INVALID_BANK =
             "Bank transfer payment requires a non-blank bank name and reference number.";
     public static final String MESSAGE_INVALID_CARD =
@@ -67,6 +69,7 @@ public class PaymentInfo {
             break;
         case PAYNOW:
             checkArgument(handle != null && !handle.isBlank(), MESSAGE_INVALID_PAYNOW);
+            checkArgument(!handle.startsWith("+") || Phone.isValidPhone(handle), MESSAGE_INVALID_PAYNOW_PHONE);
             checkArgument(!hasBankName && !hasRef && !hasLastFour && !hasWalletProvider && !hasWalletAccountId,
                     String.format(MESSAGE_UNEXPECTED_FIELD, "PAYNOW"));
             break;

@@ -189,7 +189,7 @@ public class EditCommandTest {
         Model model = new ModelManager(getTypicalHomeChef(), new UserPrefs());
         Order orderToEdit = model.getFilteredOrderList().get(INDEX_FIRST_ORDER.getZeroBased());
         PaymentInfo payNow = new PaymentInfo(
-                PaymentType.PAYNOW, "+6591234567", null, null, null, null, null);
+                PaymentType.PAYNOW, "+65 91234567", null, null, null, null, null);
 
         EditCommand.EditOrderDescriptor descriptor = new EditOrderDescriptorBuilder()
                 .withPaymentInfo(payNow).build();
@@ -210,7 +210,7 @@ public class EditCommandTest {
         Model model = new ModelManager(getTypicalHomeChef(), new UserPrefs());
         Order orderToEdit = model.getFilteredOrderList().get(INDEX_FIRST_ORDER.getZeroBased());
         PaymentInfo payNow = new PaymentInfo(
-                PaymentType.PAYNOW, "+6591234567", null, null, null, null, null);
+                PaymentType.PAYNOW, "+65 91234567", null, null, null, null, null);
         Order orderWithPayNow = new OrderBuilder(orderToEdit).withPaymentInfo(payNow).build();
         model.setOrder(orderToEdit, orderWithPayNow);
 

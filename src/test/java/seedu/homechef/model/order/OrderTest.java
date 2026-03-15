@@ -127,7 +127,7 @@ public class OrderTest {
 
     @Test
     public void getPaymentInfo_withPaymentInfo_returnsPaymentInfo() {
-        PaymentInfo payNow = new PaymentInfo(PaymentType.PAYNOW, "+6591234567",
+        PaymentInfo payNow = new PaymentInfo(PaymentType.PAYNOW, "+65 91234567",
                 null, null, null, null, null);
         Order order = new OrderBuilder().withPaymentInfo(payNow).build();
         assertEquals(Optional.of(payNow), order.getPaymentInfo());

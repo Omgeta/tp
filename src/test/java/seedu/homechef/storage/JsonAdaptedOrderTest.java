@@ -170,14 +170,14 @@ public class JsonAdaptedOrderTest {
     @Test
     public void toModelType_validPayNowPayment_roundTrips() throws Exception {
         PaymentInfo payNow = new PaymentInfo(
-                PaymentType.PAYNOW, "+6591234567", null, null, null, null, null);
+                PaymentType.PAYNOW, "+65 91234567", null, null, null, null, null);
         Order orderWithPayment = new OrderBuilder(BENSON).withPaymentInfo(payNow).build();
         JsonAdaptedOrder adapted = new JsonAdaptedOrder(orderWithPayment);
         Order result = adapted.toModelType();
         assertEquals(orderWithPayment, result);
         assertTrue(result.getPaymentInfo().isPresent());
         assertEquals(PaymentType.PAYNOW, result.getPaymentInfo().get().getType());
-        assertEquals("+6591234567", result.getPaymentInfo().get().getHandle());
+        assertEquals("+65 91234567", result.getPaymentInfo().get().getHandle());
     }
 
     @Test

@@ -28,10 +28,16 @@ public class PaymentInfoTest {
 
     @Test
     public void constructor_payNow_success() {
-        PaymentInfo info = new PaymentInfo(PaymentType.PAYNOW, "+6591234567", null, null, null, null, null);
+        PaymentInfo info = new PaymentInfo(PaymentType.PAYNOW, "+65 91234567", null, null, null, null, null);
         assertEquals(PaymentType.PAYNOW, info.getType());
-        assertEquals("+6591234567", info.getHandle());
-        assertEquals("PAYNOW (handle: +6591234567)", info.toString());
+        assertEquals("+65 91234567", info.getHandle());
+        assertEquals("PAYNOW (handle: +65 91234567)", info.toString());
+    }
+
+    @Test
+    public void constructor_payNowInvalidPhoneFormat_throwsIae() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new PaymentInfo(PaymentType.PAYNOW, "+6591234567", null, null, null, null, null));
     }
 
     @Test
@@ -49,7 +55,7 @@ public class PaymentInfoTest {
     @Test
     public void constructor_payNowWithExtraBankName_throwsIae() {
         assertThrows(IllegalArgumentException.class, () ->
-                new PaymentInfo(PaymentType.PAYNOW, "+6591234567", "DBS", null, null, null, null));
+                new PaymentInfo(PaymentType.PAYNOW, "+65 91234567", "DBS", null, null, null, null));
     }
 
     // --- BANK ---
@@ -155,7 +161,7 @@ public class PaymentInfoTest {
     public void equals() {
         PaymentInfo cash1 = new PaymentInfo(PaymentType.CASH, null, null, null, null, null, null);
         PaymentInfo cash2 = new PaymentInfo(PaymentType.CASH, null, null, null, null, null, null);
-        PaymentInfo payNow = new PaymentInfo(PaymentType.PAYNOW, "+6591234567", null, null, null, null, null);
+        PaymentInfo payNow = new PaymentInfo(PaymentType.PAYNOW, "+65 91234567", null, null, null, null, null);
 
         assertTrue(cash1.equals(cash1));
         assertTrue(cash1.equals(cash2));

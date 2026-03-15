@@ -78,7 +78,7 @@ public class EditOrderDescriptorTest {
         EditOrderDescriptor amyWithPayment = new EditOrderDescriptorBuilder(DESC_AMY)
                 .withPaymentInfo(new PaymentInfo(PaymentType.CASH, null, null, null, null, null, null)).build();
         EditOrderDescriptor amyWithDifferentPayment = new EditOrderDescriptorBuilder(DESC_AMY)
-                .withPaymentInfo(new PaymentInfo(PaymentType.PAYNOW, "+6591234567", null, null, null, null, null))
+                .withPaymentInfo(new PaymentInfo(PaymentType.PAYNOW, "+65 91234567", null, null, null, null, null))
                 .build();
         assertFalse(amyWithPayment.equals(amyWithDifferentPayment));
 

@@ -76,7 +76,7 @@ public class CommandTestUtil {
     public static final String VALID_PAYMENT_METHOD_BANK = "BANK";
     public static final String VALID_PAYMENT_METHOD_CARD = "CARD";
     public static final String VALID_PAYMENT_METHOD_EWALLET = "EWALLET";
-    public static final String VALID_PAYMENT_REF_PAYNOW = "+6591234567";
+    public static final String VALID_PAYMENT_REF_PAYNOW = "+65 91234567";
     public static final String VALID_PAYMENT_REF_BANK = "REF20240101";
     public static final String VALID_BANK_NAME = "DBS";
     public static final String VALID_PAYMENT_REF_CARD = "4321";

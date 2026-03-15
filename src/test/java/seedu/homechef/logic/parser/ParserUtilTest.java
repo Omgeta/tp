@@ -217,10 +217,10 @@ public class ParserUtilTest {
     @Test
     public void parsePaymentInfo_payNow_success() throws Exception {
         Optional<PaymentInfo> result = ParserUtil.parsePaymentInfo(
-                Optional.of("PAYNOW"), Optional.of("+6591234567"), Optional.empty(), Optional.empty());
+                Optional.of("PAYNOW"), Optional.of("+65 91234567"), Optional.empty(), Optional.empty());
         assertTrue(result.isPresent());
         assertEquals(PaymentType.PAYNOW, result.get().getType());
-        assertEquals("+6591234567", result.get().getHandle());
+        assertEquals("+65 91234567", result.get().getHandle());
     }
 
     @Test
