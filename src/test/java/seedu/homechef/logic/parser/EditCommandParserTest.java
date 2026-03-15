@@ -299,4 +299,11 @@ public class EditCommandParserTest {
         String userInput = "1" + PAYMENT_METHOD_DESC_PAYNOW + PAYMENT_REF_DESC_PAYNOW + BANK_NAME_DESC;
         assertParseFailure(parser, userInput, "b/ only valid for BANK payment type.");
     }
+
+    @Test
+    public void parse_walletProviderWithBank_failure() {
+        String userInput = "1" + PAYMENT_METHOD_DESC_BANK + PAYMENT_REF_DESC_BANK + BANK_NAME_DESC
+                + WALLET_PROVIDER_DESC;
+        assertParseFailure(parser, userInput, "w/ only valid for EWALLET payment type.");
+    }
 }

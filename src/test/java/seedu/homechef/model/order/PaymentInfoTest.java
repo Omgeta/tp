@@ -75,6 +75,12 @@ public class PaymentInfoTest {
                 new PaymentInfo(PaymentType.BANK, null, "DBS", null, null, null, null));
     }
 
+    @Test
+    public void constructor_bankWithExtraHandle_throwsIae() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new PaymentInfo(PaymentType.BANK, "+6591234567", "DBS", "REF123", null, null, null));
+    }
+
     // --- CARD ---
 
     @Test

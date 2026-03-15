@@ -348,4 +348,36 @@ public class AddCommandParserTest {
         assertParseFailure(parser, userInput,
                 "r/ required for PAYNOW (provide phone number or UEN).");
     }
+
+    @Test
+    public void parse_refWithoutMethod_failure() {
+        String userInput = FOOD_DESC_AMY + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
+                + ADDRESS_DESC_AMY + DATE_DESC_AMY + PAYMENT_REF_DESC_PAYNOW;
+        assertParseFailure(parser, userInput,
+                "Payment method (m/) required when payment details are provided.");
+    }
+
+    @Test
+    public void parse_bankNameWithPayNow_failure() {
+        String userInput = FOOD_DESC_AMY + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
+                + ADDRESS_DESC_AMY + DATE_DESC_AMY
+                + PAYMENT_METHOD_DESC_PAYNOW + PAYMENT_REF_DESC_PAYNOW + BANK_NAME_DESC;
+        assertParseFailure(parser, userInput, "b/ only valid for BANK payment type.");
+    }
+
+    @Test
+    public void parse_walletProviderWithBank_failure() {
+        String userInput = FOOD_DESC_AMY + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
+                + ADDRESS_DESC_AMY + DATE_DESC_AMY
+                + PAYMENT_METHOD_DESC_BANK + PAYMENT_REF_DESC_BANK + BANK_NAME_DESC + WALLET_PROVIDER_DESC;
+        assertParseFailure(parser, userInput, "w/ only valid for EWALLET payment type.");
+    }
+
+    @Test
+    public void parse_cashWithRef_failure() {
+        String userInput = FOOD_DESC_AMY + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
+                + ADDRESS_DESC_AMY + DATE_DESC_AMY + PAYMENT_METHOD_DESC_CASH + PAYMENT_REF_DESC_PAYNOW;
+        assertParseFailure(parser, userInput,
+                "No additional payment details (r/, b/, w/) are expected for CASH.");
+    }
 }
