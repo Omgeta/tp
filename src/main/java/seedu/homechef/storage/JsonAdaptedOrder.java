@@ -16,6 +16,7 @@ import seedu.homechef.model.order.Email;
 import seedu.homechef.model.order.Food;
 import seedu.homechef.model.order.Name;
 import seedu.homechef.model.order.Order;
+import seedu.homechef.model.order.PaymentStatus;
 import seedu.homechef.model.order.Phone;
 import seedu.homechef.model.tag.DietTag;
 
@@ -32,6 +33,7 @@ class JsonAdaptedOrder {
     private final String email;
     private final String address;
     private final String date;
+    private final String paymentStatus;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
     /**
@@ -41,6 +43,7 @@ class JsonAdaptedOrder {
     public JsonAdaptedOrder(@JsonProperty("dish") String dish, @JsonProperty("name") String name,
                             @JsonProperty("phone") String phone, @JsonProperty("email") String email,
                             @JsonProperty("address") String address, @JsonProperty("date") String date,
+                            @JsonProperty("paymentStatus") String paymentStatus,
                             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.dish = dish;
         this.name = name;
@@ -48,6 +51,7 @@ class JsonAdaptedOrder {
         this.email = email;
         this.address = address;
         this.date = date;
+        this.paymentStatus = paymentStatus;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -63,6 +67,7 @@ class JsonAdaptedOrder {
         email = source.getEmail().value;
         address = source.getAddress().value;
         date = source.getDate().toString();
+        paymentStatus = source.getPaymentStatus().toString();
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -127,8 +132,18 @@ class JsonAdaptedOrder {
         }
         final Date modelDate = new Date(date);
 
+        if (paymentStatus == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    PaymentStatus.class.getSimpleName()));
+        }
+        if (!PaymentStatus.isValidStatus(paymentStatus)) {
+            throw new IllegalValueException(PaymentStatus.MESSAGE_CONSTRAINTS);
+        }
+        boolean isPaid = paymentStatus.equals(PaymentStatus.STATUS_PAID);
+        final PaymentStatus modelPaymentStatus = new PaymentStatus(isPaid);
         final Set<DietTag> modelDietTags = new HashSet<>(orderDietTags);
-        return new Order(modelFood, modelName, modelPhone, modelEmail, modelAddress, modelDate, modelDietTags);
+        return new Order(modelFood, modelName, modelPhone, modelEmail, modelAddress,
+                modelDate, modelPaymentStatus, modelDietTags);
     }
 
 }
