@@ -117,8 +117,7 @@ public class EditCommand extends Command {
         Email updatedEmail = editOrderDescriptor.getEmail().orElse(orderToEdit.getEmail());
         Address updatedAddress = editOrderDescriptor.getAddress().orElse(orderToEdit.getAddress());
         Date updatedDate = editOrderDescriptor.getDate().orElse(orderToEdit.getDate());
-        CompletionStatus updatedCompletionStatus =
-                editOrderDescriptor.getCompletionStatus().orElse(orderToEdit.getCompletionStatus());
+        CompletionStatus updatedCompletionStatus = orderToEdit.getCompletionStatus();
         Set<DietTag> updatedDietTags = editOrderDescriptor.getTags().orElse(orderToEdit.getTags());
         Optional<PaymentInfo> updatedPaymentInfo = editOrderDescriptor.getPaymentInfo().isPresent()
                 ? editOrderDescriptor.getPaymentInfo()
