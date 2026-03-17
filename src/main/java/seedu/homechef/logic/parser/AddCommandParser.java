@@ -68,12 +68,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                 argMultimap.getValue(PREFIX_PAYMENT_REF),
                 argMultimap.getValue(PREFIX_BANK_NAME),
                 argMultimap.getValue(PREFIX_WALLET_PROVIDER));
-
-<<<<<<< implement-completion-status
-        Order order = new Order(food, name, phone, email, address, date, completionStatus, dietTagList);
-=======
-        Order order = new Order(food, name, phone, email, address, date, dietTagList, paymentInfo);
->>>>>>> master
+        Order order = new Order(food, name, phone, email, address, date, completionStatus, dietTagList, paymentInfo);
 
         return new AddCommand(order);
     }
