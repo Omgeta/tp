@@ -44,7 +44,7 @@ public class PaidCommand extends Command {
         Order orderToEdit = lastShownList.get(targetIndex.getZeroBased());
         PaymentStatus paidStatus = new PaymentStatus(PaymentStatus.IS_PAID);
         Order editedOrder = new Order(
-                orderToEdit.getFood(), orderToEdit.getName(), orderToEdit.getPhone(),
+                orderToEdit.getFood(), orderToEdit.getCustomer(), orderToEdit.getPhone(),
                 orderToEdit.getEmail(), orderToEdit.getAddress(), orderToEdit.getDate(),
                 orderToEdit.getCompletionStatus(), paidStatus, orderToEdit.getTags());
 
