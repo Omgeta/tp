@@ -62,7 +62,7 @@ public class MarkCompleteCommand extends Command {
 
     /**
      * Creates and returns a {@code Order} with the details of {@code orderToMarkComplete}
-     * marking with {@code CompletionStatus} to a value of 1 (complete).
+     * marking {@code CompletionStatus} to completed.
      */
     private static Order createCompletedOrder(Order orderToMarkComplete) {
         assert orderToMarkComplete != null;

@@ -7,7 +7,7 @@ import static seedu.homechef.commons.util.AppUtil.checkArgument;
  */
 public class CompletionStatus {
     public static final String MESSAGE_CONSTRAINTS = String.format(
-            "Completion status must be represented as a valid enum");
+            "Completion status must be represented as a valid string, 'In progress' or 'Completed'");
 
     public final CompletionStatusEnum value;
 

@@ -52,31 +52,31 @@ public class MarkInProgressCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
         }
 
-        Order orderToMarkIncomplete = lastShownList.get(targetIndex.getZeroBased());
-        Order incompleteOrder = createIncompleteOrder(orderToMarkIncomplete);
+        Order orderToMarkInProgress = lastShownList.get(targetIndex.getZeroBased());
+        Order incompleteOrder = createIncompleteOrder(orderToMarkInProgress);
 
-        model.setOrder(orderToMarkIncomplete, incompleteOrder);
+        model.setOrder(orderToMarkInProgress, incompleteOrder);
         model.updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
         return new CommandResult(String.format(
-                MESSAGE_IN_PROGRESS_ORDER_SUCCESS, Messages.format(orderToMarkIncomplete)));
+                MESSAGE_IN_PROGRESS_ORDER_SUCCESS, Messages.format(orderToMarkInProgress)));
     }
 
     /**
-     * Creates and returns a {@code Order} with the details of {@code orderToMarkComplete}
-     * marking with {@code CompletionStatus} to a value of 1 (complete).
+     * Creates and returns a {@code Order} with the details of {@code orderToMarkIncomplete}
+     * marking {@code CompletionStatus} in progress.
      */
-    private static Order createIncompleteOrder(Order orderToMarkIncomplete) {
-        assert orderToMarkIncomplete != null;
+    private static Order createIncompleteOrder(Order orderToMarkInProgress) {
+        assert orderToMarkInProgress != null;
 
-        Food food = orderToMarkIncomplete.getFood();
-        Customer customer = orderToMarkIncomplete.getCustomer();
-        Phone phone = orderToMarkIncomplete.getPhone();
-        Email email = orderToMarkIncomplete.getEmail();
-        Address address = orderToMarkIncomplete.getAddress();
-        Date date = orderToMarkIncomplete.getDate();
+        Food food = orderToMarkInProgress.getFood();
+        Customer customer = orderToMarkInProgress.getCustomer();
+        Phone phone = orderToMarkInProgress.getPhone();
+        Email email = orderToMarkInProgress.getEmail();
+        Address address = orderToMarkInProgress.getAddress();
+        Date date = orderToMarkInProgress.getDate();
         CompletionStatus updatedCompletionStatus = new CompletionStatus("In progress");
-        Set<DietTag> dietTags = orderToMarkIncomplete.getTags();
-        Optional<PaymentInfo> paymentInfo = orderToMarkIncomplete.getPaymentInfo();
+        Set<DietTag> dietTags = orderToMarkInProgress.getTags();
+        Optional<PaymentInfo> paymentInfo = orderToMarkInProgress.getPaymentInfo();
 
         return new Order(food, customer, phone,
                 email, address, date, updatedCompletionStatus, dietTags, paymentInfo);
@@ -93,8 +93,8 @@ public class MarkInProgressCommand extends Command {
             return false;
         }
 
-        MarkInProgressCommand otherMarkCompleteCommand = (MarkInProgressCommand) other;
-        return targetIndex.equals(otherMarkCompleteCommand.targetIndex);
+        MarkInProgressCommand otherMarkInProgressCommand = (MarkInProgressCommand) other;
+        return targetIndex.equals(otherMarkInProgressCommand.targetIndex);
     }
 
     @Override

@@ -7,7 +7,7 @@ import seedu.homechef.logic.commands.MarkInProgressCommand;
 import seedu.homechef.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new DeleteCommand object
+ * Parses input arguments and creates a new MarkInProgressCommand object
  */
 public class MarkInProgressCommandParser implements Parser<MarkInProgressCommand> {
 
