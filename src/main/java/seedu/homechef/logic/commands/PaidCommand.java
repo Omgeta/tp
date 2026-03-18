@@ -10,6 +10,7 @@ import seedu.homechef.logic.Messages;
 import seedu.homechef.logic.commands.exceptions.CommandException;
 import seedu.homechef.model.Model;
 import seedu.homechef.model.order.Order;
+import seedu.homechef.model.order.PaymentStatus;
 
 /**
  * Marks an order as paid for in the HomeChef.
@@ -18,12 +19,12 @@ public class PaidCommand extends Command {
 
     public static final String COMMAND_WORD = "paid";
 
+    public static final String MESSAGE_MARK_PAID_SUCCESS = "Marked order as paid: %1$s";
+
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Marks as paid the order identified by the index number used in the displayed order list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1 ";
-
-    public static final String MESSAGE_PAID_ORDER_SUCCESS = "Marked Order: %1$s as paid";
 
     private final Index targetIndex;
 
@@ -40,7 +41,24 @@ public class PaidCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
         }
 
-        return new CommandResult("Hello from execute");
+        Order orderToEdit = lastShownList.get(targetIndex.getZeroBased());
+        PaymentStatus paidStatus = new PaymentStatus(PaymentStatus.IS_PAID);
+        Order editedOrder = new Order(
+                orderToEdit.getFood(), orderToEdit.getName(), orderToEdit.getPhone(),
+                orderToEdit.getEmail(), orderToEdit.getAddress(), orderToEdit.getDate(),
+                paidStatus, orderToEdit.getTags());
+
+        model.setOrder(orderToEdit, editedOrder);
+        model.updateFilteredOrderList(Model.PREDICATE_SHOW_ALL_ORDERS);
+
+        return new CommandResult(generateSuccessMessage(editedOrder));
+    }
+
+    /**
+     * Generates a command execution success message when an order is marked as paid.
+     */
+    private String generateSuccessMessage(Order order) {
+        return String.format(MESSAGE_MARK_PAID_SUCCESS, Messages.format(order));
     }
 
     @Override
