@@ -99,6 +99,10 @@ public class ListCommand extends Command {
         return Objects.equals(descriptor, otherListCommand.descriptor);
     }
 
+    /**
+     * Stores the details to filter the order list with. Each non-empty field value will be used
+     * as a filter criterion.
+     */
     public static class ListFilterDescriptor {
         private Date date;
         private String customerQuery;
