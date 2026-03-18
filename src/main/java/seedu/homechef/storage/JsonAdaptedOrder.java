@@ -185,7 +185,7 @@ class JsonAdaptedOrder {
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, CompletionStatus.class.getSimpleName()));
         }
         if (!CompletionStatus.isValidCompletionStatus(completionStatus)) {
-            throw new IllegalValueException(Date.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(CompletionStatus.MESSAGE_CONSTRAINTS);
         }
         final CompletionStatus modelCompletionStatus = new CompletionStatus(completionStatus);
 

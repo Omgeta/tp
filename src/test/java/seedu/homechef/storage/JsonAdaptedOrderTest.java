@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.homechef.commons.exceptions.IllegalValueException;
 import seedu.homechef.model.order.Address;
+import seedu.homechef.model.order.CompletionStatus;
 import seedu.homechef.model.order.Customer;
 import seedu.homechef.model.order.Date;
 import seedu.homechef.model.order.Email;
@@ -31,6 +32,7 @@ public class JsonAdaptedOrderTest {
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_DATE = "2020-13-01";
+    private static final String INVALID_COMPLETION_STATUS = "Not in progress";
     private static final String INVALID_TAG = "#friend";
     private static final String INVALID_PAYMENT_TYPE = "CRYPTO";
 
@@ -162,6 +164,24 @@ public class JsonAdaptedOrderTest {
                 VALID_EMAIL, VALID_ADDRESS, null, VALID_COMPLETION_STATUS,
                 VALID_TAGS, null, null, null, null, null, null, null);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Date.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, order::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidCompletionStatus_throwsIllegalValueException() {
+        JsonAdaptedOrder order = new JsonAdaptedOrder(VALID_FOOD, VALID_CUSTOMER, VALID_PHONE,
+                VALID_EMAIL, VALID_ADDRESS, VALID_DATE, INVALID_COMPLETION_STATUS,
+                VALID_TAGS, null, null, null, null, null, null, null);
+        String expectedMessage = CompletionStatus.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, order::toModelType);
+    }
+
+    @Test
+    public void toModelType_nullCompletionStatus_throwsIllegalValueException() {
+        JsonAdaptedOrder order = new JsonAdaptedOrder(VALID_FOOD, VALID_CUSTOMER, VALID_PHONE,
+                VALID_EMAIL, VALID_ADDRESS, VALID_DATE, null,
+                VALID_TAGS, null, null, null, null, null, null, null);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, CompletionStatus.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, order::toModelType);
     }
 
