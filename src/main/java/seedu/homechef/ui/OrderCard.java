@@ -80,7 +80,6 @@ public class OrderCard extends UiPart<Region> {
 
     private void setCompletionStatusLabel(CompletionStatus status) {
         completionStatus.setText(status.toString());
-        completionStatus.getStyleClass().add("cell_completion_status_label");
         switch (status) {
         case IN_PROGRESS:
             completionStatus.getStyleClass().add("completion_status_label_in_progress");
@@ -95,7 +94,6 @@ public class OrderCard extends UiPart<Region> {
 
     private void setPaymentStatusLabel(PaymentStatus status) {
         paymentStatus.setText(status.toString());
-        paymentStatus.getStyleClass().add("cell_payment_status_label");
         switch (status) {
         case PAID:
             paymentStatus.getStyleClass().add("payment_status_label_paid");
