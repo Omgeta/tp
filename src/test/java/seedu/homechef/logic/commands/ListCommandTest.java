@@ -92,6 +92,22 @@ public class ListCommandTest {
         assertCommandSuccess(new ListCommand(d), model, ListCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
+    @Test
+    public void execute_withCompletionAndPaymentFilters_filtersList() {
+        CompletionStatus completed = new CompletionStatus("Completed");
+        PaymentStatus unpaid = new PaymentStatus(false);
+
+        ListCommand.ListFilterDescriptor d = new ListCommand.ListFilterDescriptor();
+        d.setCompletionStatus(completed);
+        d.setPaymentStatus(unpaid);
+
+        expectedModel.updateFilteredOrderList(order ->
+                order.getCompletionStatus().equals(completed)
+                        && order.getPaymentStatus().equals(unpaid));
+
+        assertCommandSuccess(new ListCommand(d), model, ListCommand.MESSAGE_SUCCESS, expectedModel);
+    }
+
 
     @Test
     public void equals() {
