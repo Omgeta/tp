@@ -37,9 +37,14 @@ public class AddMenuCommandParser implements Parser<AddMenuCommand> {
 
         MenuItemName name = new MenuItemName(argMultimap.getValue(PREFIX_MENU_NAME).get().trim());
         Price price = new Price(argMultimap.getValue(PREFIX_PRICE).get().trim());
-        boolean available = argMultimap.getValue(PREFIX_AVAILABILITY)
-                .map(s -> Boolean.parseBoolean(s.trim()))
-                .orElse(true);
+        boolean available = true;
+        if (argMultimap.getValue(PREFIX_AVAILABILITY).isPresent()) {
+            String availStr = argMultimap.getValue(PREFIX_AVAILABILITY).get().trim().toLowerCase();
+            if (!availStr.equals("true") && !availStr.equals("false")) {
+                throw new ParseException("Availability must be 'true' or 'false'.");
+            }
+            available = availStr.equals("true");
+        }
 
         return new AddMenuCommand(new MenuItem(name, price, available));
     }

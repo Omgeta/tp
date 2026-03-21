@@ -39,7 +39,8 @@ public class AddMenuCommandTest {
 
         CommandResult commandResult = new AddMenuCommand(validItem).execute(modelStub);
 
-        assertTrue(commandResult.getFeedbackToUser().contains("Chicken Rice"));
+        assertEquals(String.format(AddMenuCommand.MESSAGE_SUCCESS, "Chicken Rice", "5.50"),
+                commandResult.getFeedbackToUser());
         assertEquals(1, modelStub.menuItemsAdded.size());
     }
 
@@ -64,6 +65,7 @@ public class AddMenuCommandTest {
         assertTrue(addChicken.equals(new AddMenuCommand(chicken)));
         assertFalse(addChicken.equals(addNasi));
         assertFalse(addChicken.equals(null));
+        assertFalse(addChicken.equals(1));
     }
 
     /**
