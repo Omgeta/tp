@@ -1,6 +1,5 @@
 package seedu.homechef.model.menu;
 
-import static java.util.Objects.requireNonNull;
 import static seedu.homechef.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
