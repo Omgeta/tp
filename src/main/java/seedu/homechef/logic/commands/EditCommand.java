@@ -99,10 +99,6 @@ public class EditCommand extends Command {
         Order orderToEdit = lastShownList.get(index.getZeroBased());
         Order editedOrder = createEditedOrder(orderToEdit, editOrderDescriptor);
 
-        if (!orderToEdit.isSameOrder(editedOrder) && model.hasOrder(editedOrder)) {
-            throw new CommandException(MESSAGE_DUPLICATE_ORDER);
-        }
-
         if (editOrderDescriptor.getFood().isPresent()) {
             String newFoodName = editedOrder.getFood().foodName;
             Optional<MenuItem> matchingItem = model.getMenuBook().getMenuItemList().stream()
@@ -139,6 +135,10 @@ public class EditCommand extends Command {
                             newFoodName));
                 }
             }
+        }
+
+        if (!orderToEdit.isSameOrder(editedOrder) && model.hasOrder(editedOrder)) {
+            throw new CommandException(MESSAGE_DUPLICATE_ORDER);
         }
 
         model.setOrder(orderToEdit, editedOrder);

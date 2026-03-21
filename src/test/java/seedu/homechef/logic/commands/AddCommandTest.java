@@ -227,6 +227,15 @@ public class AddCommandTest {
             requireNonNull(order);
             return this.order.isSameOrder(order);
         }
+
+        @Override
+        public seedu.homechef.model.menu.ReadOnlyMenuBook getMenuBook() {
+            seedu.homechef.model.menu.MenuBook menuBook = new seedu.homechef.model.menu.MenuBook();
+            menuBook.addMenuItem(new seedu.homechef.model.menu.MenuItem(
+                    new seedu.homechef.model.menu.MenuItemName("Birthday Cake"),
+                    new seedu.homechef.model.menu.Price("25.00"), true));
+            return menuBook;
+        }
     }
 
     /**
