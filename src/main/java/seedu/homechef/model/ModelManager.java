@@ -23,7 +23,6 @@ import seedu.homechef.model.order.Order;
  * Represents the in-memory model of the HomeChef data.
  */
 public class ModelManager implements Model {
-    public static final Predicate<MenuItem> PREDICATE_SHOW_ALL_MENU_ITEMS = unused -> true;
 
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
@@ -219,7 +218,8 @@ public class ModelManager implements Model {
         return homeChef.equals(otherModelManager.homeChef)
                 && menuBook.equals(otherModelManager.menuBook)
                 && userPrefs.equals(otherModelManager.userPrefs)
-                && filteredOrders.equals(otherModelManager.filteredOrders);
+                && filteredOrders.equals(otherModelManager.filteredOrders)
+                && filteredMenuItems.equals(otherModelManager.filteredMenuItems);
     }
 
 }
