@@ -102,26 +102,33 @@ public class ModelManagerTest {
                 .withCompletionStatus("Completed")
                 .build();
 
+        Order pendingLater = new OrderBuilder().withCustomer("Pam").withFood("Tart").withPhone("88888888")
+                .withEmail("p@example.com").withAddress("addr").withDate("20-04-2026")
+                .withCompletionStatus("Pending")
+                .build();
+
         Order inProgressLate = new OrderBuilder().withCustomer("Ivy").withFood("Bread").withPhone("11111111")
                 .withEmail("i@example.com").withAddress("addr").withDate("20-04-2026")
-                .withCompletionStatus("In progress")
+                .withCompletionStatus("In Progress")
                 .build();
 
         Order inProgressEarly = new OrderBuilder().withCustomer("Amy").withFood("Pie").withPhone("22222222")
                 .withEmail("a@example.com").withAddress("addr").withDate("10-04-2026")
-                .withCompletionStatus("In progress")
+                .withCompletionStatus("In Progress")
                 .build();
 
         HomeChef homeChef = new HomeChefBuilder()
                 .withOrder(completedEarly)
+                .withOrder(pendingLater)
                 .withOrder(inProgressLate)
                 .withOrder(inProgressEarly)
                 .build();
         modelManager = new ModelManager(homeChef, new UserPrefs());
 
-        assertEquals(inProgressEarly, modelManager.getFilteredOrderList().get(0));
-        assertEquals(inProgressLate, modelManager.getFilteredOrderList().get(1));
-        assertEquals(completedEarly, modelManager.getFilteredOrderList().get(2));
+        assertEquals(pendingLater, modelManager.getFilteredOrderList().get(0));
+        assertEquals(inProgressEarly, modelManager.getFilteredOrderList().get(1));
+        assertEquals(inProgressLate, modelManager.getFilteredOrderList().get(2));
+        assertEquals(completedEarly, modelManager.getFilteredOrderList().get(3));
     }
 
     @Test

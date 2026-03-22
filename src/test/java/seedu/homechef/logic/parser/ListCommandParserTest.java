@@ -75,6 +75,13 @@ public class ListCommandParserTest {
     }
 
     @Test
+    public void parse_validCompletionStatusPendingKeyword_success() {
+        ListCommand.ListFilterDescriptor d = new ListCommand.ListFilterDescriptor();
+        d.setCompletionStatus(CompletionStatus.PENDING);
+        assertParseSuccess(parser, " cs/pending", new ListCommand(d));
+    }
+
+    @Test
     public void parse_validCompletionStatusExactString_success() {
         ListCommand.ListFilterDescriptor d = new ListCommand.ListFilterDescriptor();
         d.setCompletionStatus(CompletionStatus.IN_PROGRESS);
@@ -86,6 +93,13 @@ public class ListCommandParserTest {
         ListCommand.ListFilterDescriptor d = new ListCommand.ListFilterDescriptor();
         d.setCompletionStatus(CompletionStatus.IN_PROGRESS);
         assertParseSuccess(parser, " cs/inprogress", new ListCommand(d));
+    }
+
+    @Test
+    public void parse_validCompletionStatusCompletedKeyword_success() {
+        ListCommand.ListFilterDescriptor d = new ListCommand.ListFilterDescriptor();
+        d.setCompletionStatus(CompletionStatus.COMPLETED);
+        assertParseSuccess(parser, " cs/completed", new ListCommand(d));
     }
 
     @Test
