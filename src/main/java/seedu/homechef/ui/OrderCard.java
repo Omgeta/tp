@@ -101,6 +101,8 @@ public class OrderCard extends UiPart<Region> {
         case UNPAID:
             paymentStatus.getStyleClass().add("payment_status_label_unpaid");
             break;
+        case PARTIAL:
+            paymentStatus.getStyleClass().add("payment_status_label_partial");
         default:
             // Do nothing
         }
