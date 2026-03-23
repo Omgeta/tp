@@ -13,15 +13,21 @@ HomeChef-Helper (HomeChef) is a **desktop app for managing orders, optimized for
 ## Quick start
 
 1. Ensure you have Java `17` or above installed in your Computer.<br>
+    A tutorial on how to download Java `17` can be found [here](https://se-education.org/guides/tutorials/javaInstallation.html).<br>
    **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
 1. Download the latest `.jar` file from [here](https://github.com/AY2526S2-CS2103T-T13-4/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your HomeChef.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar homechef.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+1. Double click on the `homechef.jar` file to launch the app.<br>
+   If that does not work, try the following:
+   > 1. Open a command terminal, (Command Prompt or Powershell on Windows, Terminal on Mac).<br>
+   > 1. `cd` into the folder you put the jar file in.<br> For example:<br> `cd Desktop/Folder1/FolderContainingHomeChef`<br>
+   > 1. Type the `java -jar homechef.jar` command to run the application.<br>
+      
+    If successful, a screen similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+      ![Ui](images/Ui.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -85,6 +91,11 @@ Format: `edit INDEX f/FOOD c/NAME p/PHONE e/EMAIL a/ADDRESS d/DATE [t/TAG]…​
 An order can have any number of dietTags (including 0)
 </div>
 
+Orders have their dates coloured according to the urgency of the Order.
+> White indicates that the `Order` is not late, it is due ***more than 3*** from today's date.<br>
+> Orange indicates that the `Order` is not late, but it is ***due within 3*** days.<br>
+> Red indicates that the `Order` is late, it was due ***before*** today's date.
+
 Examples:
 * `add f/Red Bean Bun c/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 d/30-03-2026`
 * `add f/Hawaiian Pizza c/Betsy Crowe t/Halal e/betsycrowe@example.com a/Newgate Prison p/1234567 d/12-12-2026 t/No peanuts`
@@ -111,30 +122,35 @@ Examples:
 ### Marking an order as in progress: `inprogress`
 
 Sets the completion status of an order to 'In progress'.
+In progress orders have their completion status coloured orange.
 
 Format: `inprogress INDEX`
 
 ### Marking an order as complete: `complete`
 
 Sets the completion status of an order to 'Completed'.
+Completed orders have their completion status coloured green.
 
 Format: `complete INDEX`
 
 ### Marking an order as pending: `pending`
 
 Sets the completion status of an order to 'Pending'.
+Pending orders have their completion status coloured dark grey.
 
 Format: `pending INDEX`
 
 ### Marking an order as paid: `paid`
 
-Sets the payment status of an order to '$ PAID'.
+Sets the payment status of an order to '$ Paid'.
+Paid orders have their payment status coloured green.
 
 Format: `paid INDEX`
 
 ### Marking an order as unpaid: `unpaid`
 
-Sets the payment status of an order to '$ UNPAID'.
+Sets the payment status of an order to '$ Unpaid'.
+Unpaid orders have their payment status coloured red.
 
 Format: `unpaid INDEX`
 
