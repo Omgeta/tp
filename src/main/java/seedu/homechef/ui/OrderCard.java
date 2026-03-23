@@ -1,5 +1,7 @@
 package seedu.homechef.ui;
 
+import static seedu.homechef.commons.util.AppUtil.checkArgument;
+
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
@@ -132,6 +134,24 @@ public class OrderCard extends UiPart<Region> {
     private void setDateDisplay(Date date) {
         dateDisplayIcon.setImage(dateIcon);
         this.date.setText(date.toString());
+        String dateUrgency = date.getUrgency();
+
+        assert dateUrgency != null && !dateUrgency.isBlank();
+
+        switch (dateUrgency) {
+        case Date.NORMAL:
+            this.date.getStyleClass().add("normal");
+            break;
+        case Date.URGENT:
+            this.date.getStyleClass().add("urgent");
+            break;
+        case Date.OVERDUE:
+            this.date.getStyleClass().add("overdue");
+            break;
+        default:
+            checkArgument(Date.isValidUrgency(dateUrgency),
+                    Date.URGENCY_CONSTRAINTS);
+        }
     }
 
     private void setEmailDisplay(Email email) {
@@ -156,7 +176,8 @@ public class OrderCard extends UiPart<Region> {
             completionStatus.getStyleClass().add("completion_status_label_complete");
             break;
         default:
-            // Do nothing
+            checkArgument(CompletionStatus.isValidCompletionStatus(status.toString()),
+                    CompletionStatus.MESSAGE_CONSTRAINTS);
         }
     }
 
@@ -172,7 +193,8 @@ public class OrderCard extends UiPart<Region> {
             paymentStatus.getStyleClass().add("payment_status_label_unpaid");
             break;
         default:
-            // Do nothing
+            checkArgument(PaymentStatus.isValidPaymentStatus(status.toString()),
+                    PaymentStatus.MESSAGE_CONSTRAINTS);
         }
     }
 }
