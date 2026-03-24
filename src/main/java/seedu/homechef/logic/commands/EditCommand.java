@@ -318,9 +318,9 @@ public class EditCommand extends Command {
                     .add("email", email)
                     .add("address", address)
                     .add("date", date)
-                    .add("price", price)
                     .add("dietTags", dietTags)
                     .add("paymentInfo", paymentInfo)
+                    .add("price", price)
                     .toString();
         }
     }
