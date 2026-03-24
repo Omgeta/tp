@@ -27,7 +27,8 @@ import seedu.homechef.testutil.TypicalMenuItems;
  */
 public class PartialCommandTest {
 
-    private Model model = new ModelManager(getTypicalHomeChef(), TypicalMenuItems.getTypicalMenuBook(), new UserPrefs());
+    private Model model = new ModelManager(
+            getTypicalHomeChef(), TypicalMenuItems.getTypicalMenuBook(), new UserPrefs());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -43,7 +44,8 @@ public class PartialCommandTest {
         String expectedMessage = String.format(PartialCommand.MESSAGE_MARK_PARTIAL_SUCCESS,
                 Messages.format(editedOrder));
 
-        ModelManager expectedModel = new ModelManager(model.getHomeChef(), TypicalMenuItems.getTypicalMenuBook(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(
+                model.getHomeChef(), TypicalMenuItems.getTypicalMenuBook(), new UserPrefs());
         expectedModel.setOrder(orderToEdit, editedOrder);
 
         assertCommandSuccess(partialCommand, model, expectedMessage, expectedModel);
@@ -73,7 +75,8 @@ public class PartialCommandTest {
         String expectedMessage = String.format(PartialCommand.MESSAGE_MARK_PARTIAL_SUCCESS,
                 Messages.format(editedOrder));
 
-        Model expectedModel = new ModelManager(model.getHomeChef(), TypicalMenuItems.getTypicalMenuBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(
+                model.getHomeChef(), TypicalMenuItems.getTypicalMenuBook(), new UserPrefs());
         expectedModel.setOrder(orderToEdit, editedOrder);
 
         assertCommandSuccess(partialCommand, model, expectedMessage, expectedModel);
