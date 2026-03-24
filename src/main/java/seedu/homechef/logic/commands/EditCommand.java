@@ -1,6 +1,8 @@
 package seedu.homechef.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.homechef.logic.Messages.MESSAGE_MENU_ITEM_NOT_FOUND;
+import static seedu.homechef.logic.Messages.MESSAGE_MENU_ITEM_UNAVAILABLE;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_BANK_NAME;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_CUSTOMER;
@@ -20,9 +22,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-
-import static seedu.homechef.logic.Messages.MESSAGE_MENU_ITEM_NOT_FOUND;
-import static seedu.homechef.logic.Messages.MESSAGE_MENU_ITEM_UNAVAILABLE;
 
 import seedu.homechef.commons.core.index.Index;
 import seedu.homechef.commons.util.CollectionUtil;
