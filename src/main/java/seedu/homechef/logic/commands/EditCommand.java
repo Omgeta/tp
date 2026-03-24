@@ -99,7 +99,7 @@ public class EditCommand extends Command {
         Order orderToEdit = lastShownList.get(index.getZeroBased());
         Order editedOrder = createEditedOrder(orderToEdit, descriptor);
 
-        if (editOrderDescriptor.getFood().isPresent()) {
+        if (descriptor.getFood().isPresent()) {
             String newFoodName = editedOrder.getFood().foodName;
             Optional<MenuItem> matchingItem = model.getMenuBook().getMenuItemList().stream()
                     .filter(item -> item.getName().fullName.equalsIgnoreCase(newFoodName))
