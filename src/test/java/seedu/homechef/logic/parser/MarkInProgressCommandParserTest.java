@@ -14,7 +14,7 @@ public class MarkInProgressCommandParserTest {
     private MarkInProgressCommandParser parser = new MarkInProgressCommandParser();
 
     @Test
-    public void parse_validArgs_returnsMarkCompleteCommand() {
+    public void parse_validArgs_returnsMarkInProgressCommand() {
         assertParseSuccess(parser, "1", new MarkInProgressCommand(INDEX_FIRST_ORDER));
     }
 

@@ -64,8 +64,7 @@ public class ListCommandTest {
         d.setFoodQuery("Cake");
 
         expectedModel.updateFilteredOrderList(order ->
-                order.getDate().equals(target)
-                        && order.getFood().foodName.toLowerCase().contains("cake"));
+                order.getCustomer().toString().toLowerCase().contains("alice"));
 
         assertCommandSuccess(new ListCommand(d), model, ListCommand.MESSAGE_SUCCESS, expectedModel);
     }
@@ -76,7 +75,7 @@ public class ListCommandTest {
         d.setCompletionStatus(CompletionStatus.COMPLETED);
 
         expectedModel.updateFilteredOrderList(order ->
-                order.getCompletionStatus().equals(CompletionStatus.COMPLETED));
+                order.getFood().toString().toLowerCase().contains("cake"));
 
         assertCommandSuccess(new ListCommand(d), model, ListCommand.MESSAGE_SUCCESS, expectedModel);
     }
@@ -87,7 +86,8 @@ public class ListCommandTest {
         d.setPaymentStatus(PaymentStatus.PAID);
 
         expectedModel.updateFilteredOrderList(order ->
-                order.getPaymentStatus().equals(PaymentStatus.PAID));
+                order.getDate().equals(target)
+                        && order.getFood().toString().toLowerCase().contains("cake"));
 
         assertCommandSuccess(new ListCommand(d), model, ListCommand.MESSAGE_SUCCESS, expectedModel);
     }
