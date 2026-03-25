@@ -75,6 +75,8 @@ public class OrderCard extends UiPart<Region> {
     @FXML
     private Label email;
     @FXML
+    private Label price;
+    @FXML
     private Label paymentInfo;
     @FXML
     private Label completionStatus;
@@ -96,6 +98,7 @@ public class OrderCard extends UiPart<Region> {
         setAddressDisplay(order.getAddress());
         setDateDisplay(order.getDate());
         setEmailDisplay(order.getEmail());
+        setPriceDisplay();
         setCompletionStatusDisplay(order.getCompletionStatus());
         setPaymentStatusDisplay(order.getPaymentStatus());
         order.getPaymentInfo().ifPresentOrElse(
@@ -199,5 +202,11 @@ public class OrderCard extends UiPart<Region> {
             checkArgument(PaymentStatus.isValidPaymentStatus(status.toString()),
                     PaymentStatus.MESSAGE_CONSTRAINTS);
         }
+    }
+
+    private void setPriceDisplay() {
+        String orderPrice = order.getPrice().value;
+        String priceLabel = "Total: " + PAYMENT_SYMBOL + orderPrice;
+        price.setText(priceLabel);
     }
 }

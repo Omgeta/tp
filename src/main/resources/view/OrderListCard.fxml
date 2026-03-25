@@ -56,6 +56,7 @@
                 <ImageView fx:id="emailDisplayIcon" fitHeight="$ICON_HEIGHT" fitWidth="$ICON_WIDTH" pickOnBounds="true" preserveRatio="true" />
                 <Label fx:id="email" styleClass="cell_small_label" text="\$email"/>
             </HBox>
+            <Label fx:id="price" styleClass="cell_small_label" text="\$price"/>
             <Label fx:id="paymentInfo" styleClass="cell_small_label"/>
         </VBox>
     </GridPane>
