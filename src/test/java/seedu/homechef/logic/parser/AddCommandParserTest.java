@@ -1,5 +1,6 @@
 package seedu.homechef.logic.parser;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.homechef.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.homechef.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.homechef.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
@@ -64,8 +65,6 @@ import static seedu.homechef.logic.parser.CommandParserTestUtil.assertParseFailu
 import static seedu.homechef.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.homechef.testutil.TypicalOrders.AMY;
 import static seedu.homechef.testutil.TypicalOrders.BOB;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -443,6 +442,13 @@ public class AddCommandParserTest {
     public void parse_quantityNonNumeric_throwsParseException() {
         String userInput = FOOD_DESC_AMY + CUSTOMER_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
                 + ADDRESS_DESC_AMY + DATE_DESC_AMY + " " + PREFIX_QUANTITY + "abc";
+        assertParseFailure(parser, userInput, Quantity.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    public void parse_quantityAboveMax_throwsParseException() {
+        String userInput = FOOD_DESC_AMY + CUSTOMER_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
+                + ADDRESS_DESC_AMY + DATE_DESC_AMY + " " + PREFIX_QUANTITY + "1000";
         assertParseFailure(parser, userInput, Quantity.MESSAGE_CONSTRAINTS);
     }
 

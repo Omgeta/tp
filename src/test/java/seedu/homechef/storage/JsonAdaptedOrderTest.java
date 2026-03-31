@@ -24,6 +24,7 @@ import seedu.homechef.model.order.PaymentInfo;
 import seedu.homechef.model.order.PaymentStatus;
 import seedu.homechef.model.order.PaymentType;
 import seedu.homechef.model.order.Phone;
+import seedu.homechef.model.order.Quantity;
 import seedu.homechef.testutil.OrderBuilder;
 
 public class JsonAdaptedOrderTest {
@@ -285,7 +286,7 @@ public class JsonAdaptedOrderTest {
         Order orderWithQuantity = new OrderBuilder(BENSON).withQuantity(3).build();
         JsonAdaptedOrder adapted = new JsonAdaptedOrder(orderWithQuantity);
         Order result = adapted.toModelType();
-        assertEquals(3, result.getQuantity().value);
+        assertEquals(new Quantity(3), result.getQuantity());
     }
 
     @Test
@@ -295,7 +296,7 @@ public class JsonAdaptedOrderTest {
                 VALID_PRICE, VALID_COMPLETION_STATUS, VALID_PAYMENT_STATUS, VALID_TAGS,
                 null, null, null, null, null, null, null, null);
         Order result = order.toModelType();
-        assertEquals(1, result.getQuantity().value);
+        assertEquals(new Quantity(1), result.getQuantity());
     }
 
 }
