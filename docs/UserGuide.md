@@ -40,8 +40,8 @@ With a simple typing interface and a clear order list and food menu, this app is
    
    * `list f/cake` : Lists all orders with "cake" in the food's name. Good for finding orders of a similar type, or sharing the same customer.
 
-   * `add f/Red Bean Bun c/John Doe p/1234 e/johnd@example.com a/John street, block 123, #01-01 d/30-03-2026 $/1.20` :<br>
-   Adds an order named `Red Bean Bun` with customer name `John Doe` to HomeChef. <br>
+   * `add f/Red Bean Bun c/John Doe p/1234 e/johnd@example.com a/John street, block 123, #01-01 d/30-03-2026` :<br>
+   Adds an order named `Red Bean Bun` with customer name `John Doe` to HomeChef. Price is taken from the menu automatically.<br>
    The newly added order should look like this:<br>
    ![sample order](images/sampleOrder.png)<br>
    Note that the ID number may defer if there are other orders in the list.<br>
@@ -51,7 +51,7 @@ With a simple typing interface and a clear order list and food menu, this app is
    
    * `delete 3` : Deletes the 3rd order shown in the current list. Perfect for removing long completed orders that you won't refer to anymore.
 
-   * `add-menu n/Potato Wedges x/2.20` : Adds a food item called `Potato Wedges` with a price of `$2.20` into the menu on the right.<br>
+   * `add-menu n/Potato Wedges $/2.20` : Adds a food item called `Potato Wedges` with a price of `$2.20` into the menu on the right.<br>
    The newly added menu item should look like this:<br>
    ![menu item](images/sampleMenuItem.png)<br>
 
@@ -109,19 +109,17 @@ The following are the commands that interact with this order list.
 Adds an order to the order list.
 All orders are initially set as 'Pending' and 'Unpaid'.
 
-Format: `add f/FOOD c/NAME p/PHONE e/EMAIL a/ADDRESS d/DATE $/PRICE [t/TAG]…​ 
+Format: `add f/FOOD c/NAME p/PHONE e/EMAIL a/ADDRESS d/DATE [t/TAG]…​ 
 [m/PAYMENT METHOD] [r/PAYMENT REF] [b/BANK NAME] [w/WALLET PROVIDER]`
 
 * `FOOD` must match an existing food's name in the current menu exactly.
-  * Giving an input that is not in the menu will show an error message telling you to `Use 'add-menu' to add it to the menu first.` 
-* `PRICE` is a non-negative number up to 2 decimal places. Having less than 2 decimals is accepted.
-  * Giving an input that is **not a number** or a number with **more than 2 decimals** will cause an error message to appear telling you the correct format you should use.
+  * Giving an input that is not in the menu will show an error message telling you to `Use 'add-menu' to add it to the menu first.`
+* The order's price is automatically taken from the matching menu item. Use `add-menu` or `edit-menu` to update a food's price.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 An order can have any number of dietTags (including 0)
 </div>
 
-* Orders have their price set to dollars `$`. Other currencies are not supported.
 * Orders have their completion status set to `Pending` by default.
 * Orders also have their payment status set to `Unpaid` by default.
 * Orders have their dates coloured according to the urgency of the Order.
@@ -134,9 +132,9 @@ An order can have any number of dietTags (including 0)
 
 
 Examples:
-* `add f/Red Bean Bun c/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 d/30-03-2026 $/1.20`
-* `add f/Hawaiian Pizza c/Betsy Crowe t/Halal e/betsycrowe@example.com a/Newgate Prison p/1234567 d/12-12-2026 $/18.80 t/No peanuts`
-* `add f/Bananas c/Monkey p/80801414 t/An actual monkey e/ooaa@ananab.com a/Monkey Village m/Bank r/123456789 b/Monkey Bank d/18-03-2026 $/6.70`
+* `add f/Red Bean Bun c/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 d/30-03-2026`
+* `add f/Hawaiian Pizza c/Betsy Crowe t/Halal e/betsycrowe@example.com a/Newgate Prison p/1234567 d/12-12-2026 t/No peanuts`
+* `add f/Bananas c/Monkey p/80801414 t/An actual monkey e/ooaa@ananab.com a/Monkey Village m/Bank r/123456789 b/Monkey Bank d/18-03-2026`
 
 ### Listing all orders : `list`
 
@@ -229,13 +227,14 @@ Edits an existing order in the order list.
 * Completion status and payment status cannot be modified using the `edit` command and **must** be modified using the above commands. 
 
 Format: 
-`edit INDEX [f/FOOD] [c/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [d/DATE] [$/PRICE] [t/TAG]…​
+`edit INDEX [f/FOOD] [c/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [d/DATE] [t/TAG]…​
 [m/PAYMENT METHOD] [r/PAYMENT REF] [b/BANK NAME] [w/WALLET PROVIDER]`
 
 * Edits the order at the specified `INDEX`. The index refers to the index number shown in the displayed order list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
   * If no fields are provided, a message will appear telling you to provide a field.
 * Existing values will be updated to the input values.
+* If `f/FOOD` is changed, the order's price is automatically updated to match the new menu item's price.
 * When editing dietTags, the existing dietTags of the order will be removed i.e adding of dietTags is not cumulative.
 * You can remove all the order’s dietTags by typing `t/` without
     specifying any dietTags after it.
@@ -310,7 +309,7 @@ The following are the commands that interact with this menu.
 
 Adds a food item of the given name, price and availability to the menu.
 
-Format: `add-menu n/NAME x/PRICE [v/AVAILABILITY]`
+Format: `add-menu n/NAME $/PRICE [v/AVAILABILITY]`
 
 * Similar functionality to that of `add` for the order list, except the fields have different prefixes.
 * `AVAILABILITY` only accepts `true` or `false` spelled exactly.
@@ -318,8 +317,8 @@ Format: `add-menu n/NAME x/PRICE [v/AVAILABILITY]`
 * If not specified, `AVAILABILITY` will be set as `Available`.
 
 Examples:
-* `add-menu n/Bee Hoon x/5` Adds a food item called `Bee Hoon` into the menu with a price of `$5` and is specified as `Available`.
-* `add-menu n/Mee Goreng x/6.00 v/false` Adds a food item called `Mee Goreng` into the menu with a price of `$6.00` and is specified is `Unavailable`.
+* `add-menu n/Bee Hoon $/5` Adds a food item called `Bee Hoon` into the menu with a price of `$5` and is specified as `Available`.
+* `add-menu n/Mee Goreng $/6.00 v/false` Adds a food item called `Mee Goreng` into the menu with a price of `$6.00` and is specified is `Unavailable`.
 
 ### Deleting a food item : `delete-menu`
 
@@ -331,7 +330,7 @@ Format: `delete-menu INDEX`
 
 Edits an existing food item in the menu.
 
-Format: `edit-menu INDEX [n/NAME] [x/PRICE] [v/AVAILABILITY]`
+Format: `edit-menu INDEX [n/NAME] [$/PRICE] [v/AVAILABILITY]`
 
 * Similar functionality to that of `edit` for the order list, except the fields have different prefixes.
 * `AVAILABILITY` only accepts `true` or `false` spelled exactly.
@@ -339,8 +338,8 @@ Format: `edit-menu INDEX [n/NAME] [x/PRICE] [v/AVAILABILITY]`
   
 
 Example:
-* `edit-menu 1 n/Raisin Cookies x/2.00` Edits the food in the first position of the displayed menu to have the name `Raisin Cookies` and a price of `$2.00`.
-* `edit-menu 2 n/Pain au Chocolat x/3.50 v/false` Edits the food in the second position of the displayed menu to have the name `Pain au Chocolat` and a price of `$3.50`. 
+* `edit-menu 1 n/Raisin Cookies $/2.00` Edits the food in the first position of the displayed menu to have the name `Raisin Cookies` and a price of `$2.00`.
+* `edit-menu 2 n/Pain au Chocolat $/3.50 v/false` Edits the food in the second position of the displayed menu to have the name `Pain au Chocolat` and a price of `$3.50`.
 
 ## Other commands:
 
@@ -401,7 +400,7 @@ If the copies exist, copy them over to the `data` folder located in the folder t
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add f/FOOD c/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS $/PRICE [t/TAG]…​ [m/PAYMENT METHOD] [r/PAYMENT REF] [b/BANK NAME] [w/WALLET PROVIDER]` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add** | `add f/FOOD c/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS d/DATE [t/TAG]…​ [m/PAYMENT METHOD] [r/PAYMENT REF] [b/BANK NAME] [w/WALLET PROVIDER]` <br> e.g., `add f/Chicken Rice c/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd d/30-03-2026`
 **List** | `list [d/DATE] [c/CUSTOMER] [f/FOOD] [p/PHONE] [cs/COMPLETION_STATUS] [ps/PAYMENT_STATUS]`<br> e.g., `list d/18-10-2026 cs/completed ps/Paid`
 **Mark In Progress** | `inprogress INDEX` <br> e.g., `inprogress 2`
 **Mark Complete** | `complete INDEX` <br> e.g., `complete 4`
@@ -413,8 +412,8 @@ Action | Format, Examples
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Clear** | `clear`
-**Add Menu** | `add-menu n/NAME x/PRICE [v/AVAILABILITY]` <br> e.g., `add-menu n/Bee Hoon x/5.00 v/true`
+**Add Menu** | `add-menu n/NAME $/PRICE [v/AVAILABILITY]` <br> e.g., `add-menu n/Bee Hoon $/5.00 v/true`
 **Delete Menu** | `delete-menu INDEX`<br> e.g., `delete 3`
-**Edit Menu** | `edit-menu INDEX n/NAME x/PRICE [v/AVAILABILITY]` <br> e.g., `edit-menu 2 n/Pain au Chocolat x/3.50 v/true`
+**Edit Menu** | `edit-menu INDEX [n/NAME] [$/PRICE] [v/AVAILABILITY]` <br> e.g., `edit-menu 2 n/Pain au Chocolat $/3.50 v/true`
 **Help** | `help`
 **Exit** | `exit`
