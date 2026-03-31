@@ -12,6 +12,7 @@ import static seedu.homechef.logic.parser.CliSyntax.PREFIX_FOOD;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_PAYMENT_METHOD;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_PAYMENT_REF;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.homechef.logic.parser.CliSyntax.PREFIX_QUANTITY;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.homechef.logic.parser.CliSyntax.PREFIX_WALLET_PROVIDER;
 
@@ -42,6 +43,7 @@ public class AddCommand extends Command {
             + PREFIX_EMAIL + "EMAIL "
             + PREFIX_ADDRESS + "ADDRESS "
             + PREFIX_DATE + "DATE "
+            + "[" + PREFIX_QUANTITY + "QUANTITY] "
             + "[" + PREFIX_TAG + "TAG]... "
             + "[" + PREFIX_PAYMENT_METHOD + "PAYMENT_METHOD] "
             + "[" + PREFIX_PAYMENT_REF + "PAYMENT_REF] "

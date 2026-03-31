@@ -56,7 +56,7 @@ public class Price {
 
     private static String formatToTwoDecimalPlaces(String price) {
         double parsedPrice = Double.parseDouble(price);
-        return String.format("%.2f", parsedPrice);
+        return String.format(Locale.US, "%.2f", parsedPrice);
     }
 
     @Override

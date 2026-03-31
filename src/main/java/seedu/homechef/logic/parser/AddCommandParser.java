@@ -30,6 +30,7 @@ import seedu.homechef.model.order.Order;
 import seedu.homechef.model.order.PaymentInfo;
 import seedu.homechef.model.order.PaymentStatus;
 import seedu.homechef.model.order.Phone;
+import seedu.homechef.model.order.Price;
 import seedu.homechef.model.order.Quantity;
 import seedu.homechef.model.tag.DietTag;
 
@@ -37,6 +38,8 @@ import seedu.homechef.model.tag.DietTag;
  * Parses input arguments and creates a new AddCommand object
  */
 public class AddCommandParser implements Parser<AddCommand> {
+
+    private static final String PLACEHOLDER_PRICE = "0.01";
 
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
@@ -78,7 +81,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                 ? ParserUtil.parseQuantity(argMultimap.getValue(PREFIX_QUANTITY).get())
                 : new Quantity(1);
         // Price is resolved from the menu item at command execution time; use a placeholder here.
-        seedu.homechef.model.order.Price placeholderPrice = new seedu.homechef.model.order.Price("0.01");
+        Price placeholderPrice = new Price(PLACEHOLDER_PRICE);
         Order order = new Order(food, customer, phone, email, address, date,
                 completionStatus, paymentStatus, dietTagList, quantity, placeholderPrice, paymentInfo);
 
