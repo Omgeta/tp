@@ -20,6 +20,7 @@ import seedu.homechef.model.order.Food;
 import seedu.homechef.model.order.Order;
 import seedu.homechef.model.order.PaymentStatus;
 import seedu.homechef.model.order.Phone;
+import seedu.homechef.model.order.Price;
 import seedu.homechef.model.order.Quantity;
 
 /**
@@ -105,7 +106,7 @@ public class OrderCard extends UiPart<Region> {
         setAddressDisplay(order.getAddress());
         setDateDisplay(order.getDate());
         setEmailDisplay(order.getEmail());
-        setPriceDisplay();
+        setPriceDisplay(order.getPrice());
         setCompletionStatusDisplay(order.getCompletionStatus());
         setPaymentStatusDisplay(order.getPaymentStatus());
         order.getPaymentInfo().ifPresentOrElse(
@@ -218,9 +219,8 @@ public class OrderCard extends UiPart<Region> {
         }
     }
 
-    private void setPriceDisplay() {
-        String orderPrice = order.getPrice().toString();
-        String priceLabel = "Total: " + PAYMENT_SYMBOL + orderPrice;
-        price.setText(priceLabel);
+    private void setPriceDisplay(Price price) {
+        String priceLabel = "Total: " + PAYMENT_SYMBOL + price;
+        this.price.setText(priceLabel);
     }
 }
