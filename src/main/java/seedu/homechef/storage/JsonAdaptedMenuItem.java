@@ -36,7 +36,7 @@ class JsonAdaptedMenuItem {
      */
     public JsonAdaptedMenuItem(MenuItem source) {
         name = source.getFood().toString();
-        price = source.getPrice().value;
+        price = source.getPrice().toString();
         available = source.isAvailable();
     }
 

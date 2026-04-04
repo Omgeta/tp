@@ -90,9 +90,9 @@ public class AddCommand extends Command {
         }
 
         String canonicalName = matchingItem.get().getFood().toString();
-        Price unitPrice = new Price(matchingItem.get().getPrice().value);
+        Price unitPrice = new Price(matchingItem.get().getPrice().toString());
         Quantity quantity = toAdd.getQuantity();
-        Price totalPrice = Price.multiply(unitPrice, quantity);
+        Price totalPrice = unitPrice.multiply(quantity);
         Order orderToAdd = new Order(new Food(canonicalName), toAdd.getCustomer(), toAdd.getPhone(),
                 toAdd.getEmail(), toAdd.getAddress(), toAdd.getDate(),
                 toAdd.getCompletionStatus(), toAdd.getPaymentStatus(),

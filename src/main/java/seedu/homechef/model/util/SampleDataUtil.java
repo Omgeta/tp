@@ -85,18 +85,12 @@ public class SampleDataUtil {
      * Returns sample menu items corresponding to the sample foods.
      */
     public static MenuItem[] getSampleMenuItems() {
-        MenuItem cake = new MenuItem(new Food("Birthday Cake"), new seedu.homechef.model.common.Price("10.50"), true);
-        MenuItem cupcakes = new MenuItem(new Food("Cupcakes (24pcs)"), new seedu.homechef.model.common.Price("10.50"),
-                true);
-        MenuItem cookies = new MenuItem(new Food("Chocolate Chip Cookies (3pcs)"),
-                new seedu.homechef.model.common.Price("10.50"), true);
-        MenuItem assortment = new MenuItem(new Food("Cookies Assortment (50pcs)"),
-                new seedu.homechef.model.common.Price("10.50"),
-                true);
-        MenuItem pie = new MenuItem(new Food("Blueberry Pie"), new seedu.homechef.model.common.Price("10.50"), true);
-        MenuItem bread = new MenuItem(new Food("Sourdough Bread (3pcs)"),
-                new seedu.homechef.model.common.Price("10.50"),
-                true);
+        MenuItem cake = new MenuItem(new Food("Birthday Cake"), new Price("10.50"), true);
+        MenuItem cupcakes = new MenuItem(new Food("Cupcakes (24pcs)"), new Price("10.50"), true);
+        MenuItem cookies = new MenuItem(new Food("Chocolate Chip Cookies (3pcs)"), new Price("10.50"), true);
+        MenuItem assortment = new MenuItem(new Food("Cookies Assortment (50pcs)"), new Price("10.50"), true);
+        MenuItem pie = new MenuItem(new Food("Blueberry Pie"), new Price("10.50"), true);
+        MenuItem bread = new MenuItem(new Food("Sourdough Bread (3pcs)"), new Price("10.50"), true);
         return new MenuItem[]{cake, cupcakes, cookies, assortment, pie, bread};
     }
 

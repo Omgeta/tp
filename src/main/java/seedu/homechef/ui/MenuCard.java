@@ -44,7 +44,7 @@ public class MenuCard extends UiPart<Region> {
         name.setMinWidth(0);
         id.setText(displayedIndex + ". ");
         name.setText(menuItem.getFood().toString());
-        price.setText("$" + menuItem.getPrice().value);
+        price.setText("$" + menuItem.getPrice());
         if (menuItem.isAvailable()) {
             availability.setText("Available");
             availability.getStyleClass().add("availability_available");

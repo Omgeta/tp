@@ -51,7 +51,7 @@ public class AddMenuCommand extends Command {
 
         model.addMenuItem(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS,
-                toAdd.getFood(), toAdd.getPrice().value));
+                toAdd.getFood(), toAdd.getPrice().toString()));
     }
 
     @Override

@@ -26,7 +26,7 @@ public class Price {
     public static final String VALIDATION_REGEX =
             "^([1-9][0-9]*(\\.[0-9]{1,2})?|0\\.(0[1-9]|[1-9][0-9]?))$";
 
-    public final String value;
+    private final String value;
 
     /**
      * Constructs a {@code Price}.
@@ -44,16 +44,14 @@ public class Price {
     }
 
     /**
-     * Returns a new {@code Price} whose value is {@code unitPrice} multiplied by {@code qty}.
+     * Returns a new {@code Price} whose value is this price multiplied by {@code qty}.
      *
-     * @param unitPrice the per-item price.
-     * @param qty       the number of items.
+     * @param qty the number of items.
      * @return a {@code Price} representing the total cost.
      */
-    public static Price multiply(Price unitPrice, Quantity qty) {
-        requireNonNull(unitPrice);
+    public Price multiply(Quantity qty) {
         requireNonNull(qty);
-        BigDecimal total = new BigDecimal(unitPrice.value).multiply(BigDecimal.valueOf(qty.value));
+        BigDecimal total = new BigDecimal(value).multiply(BigDecimal.valueOf(qty.value));
         return new Price(total.setScale(2, RoundingMode.UNNECESSARY).toPlainString());
     }
 
@@ -86,4 +84,3 @@ public class Price {
         return value.hashCode();
     }
 }
-

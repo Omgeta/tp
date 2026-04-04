@@ -111,7 +111,7 @@ public class EditCommand extends Command {
                     throw new CommandException(String.format(MESSAGE_MENU_ITEM_UNAVAILABLE, targetFoodName));
                 }
                 String canonicalName = matchingItem.get().getFood().toString();
-                Price menuPrice = new Price(matchingItem.get().getPrice().value);
+                Price menuPrice = new Price(matchingItem.get().getPrice().toString());
                 editedOrder = new Order(new Food(canonicalName), editedOrder.getCustomer(),
                         editedOrder.getPhone(), editedOrder.getEmail(), editedOrder.getAddress(),
                         editedOrder.getDate(), editedOrder.getCompletionStatus(),

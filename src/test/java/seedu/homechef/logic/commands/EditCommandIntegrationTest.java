@@ -41,10 +41,11 @@ public class EditCommandIntegrationTest {
 
     @Test
     public void execute_editFoodToUnavailableItem_throwsCommandException() {
-        MenuItem unavailable = new MenuItem(new Food("Sourdough Bread"), new Price("8.00"), false);
+        MenuItem unavailable = new MenuItem(
+                new Food("Sourdough Bread"), new Price("8.00"), false);
         model.setMenuItem(
                 model.getFilteredMenuItemList().stream()
-                        .filter(i -> i.getFood().nameContains("Sourdough Bread"))
+                        .filter(i -> i.getFood().toString().equals("Sourdough Bread"))
                         .findFirst().get(),
                 unavailable);
 

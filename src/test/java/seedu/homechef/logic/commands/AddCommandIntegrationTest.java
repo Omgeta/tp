@@ -75,7 +75,7 @@ public class AddCommandIntegrationTest {
         MenuBook mb = new MenuBook();
         mb.addMenuItem(unavailableChicken);
         for (MenuItem item : TypicalMenuItems.getTypicalMenuItems()) {
-            if (!item.getFood().nameContains("Chicken Rice")) {
+            if (!item.getFood().toString().equalsIgnoreCase("Chicken Rice")) {
                 mb.addMenuItem(item);
             }
         }
