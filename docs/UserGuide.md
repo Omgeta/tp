@@ -150,7 +150,7 @@ This can be useful for finding orders specific to a certain customer, a certain 
 
 Format: `list [d/DATE] [c/CUSTOMER] [f/FOOD] [p/PHONE] [cs/COMPLETION STATUS] [ps/PAYMENT STATUS]`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Notes about the list command:**
+<div markdown="span" class="alert alert-primary">:bulb: **Notes about the list command:**<br>
 * Lists all orders when no parameters are given.
 * Filters are case-insensitive for `c/`, `f/` and `p/`.
 * `DATE` must be in the format `dd-MM-yyyy`.
@@ -259,7 +259,7 @@ Format:
 [m/PAYMENT METHOD] [r/PAYMENT REF] [b/BANK NAME] [w/WALLET PROVIDER]`
 
 <div markdown="span" class="alert alert-primary">:bulb: 
-**Notes about the edit command:**
+**Notes about the edit command:**<br>
 * At least one of the optional fields must be provided.
   * If no fields are provided, a message will appear telling you to provide a field.
 * Existing values will be updated to the input values.
