@@ -14,7 +14,7 @@ import seedu.homechef.logic.Messages;
 import seedu.homechef.logic.commands.EditMenuCommand;
 import seedu.homechef.logic.commands.EditMenuCommand.EditMenuDescriptor;
 import seedu.homechef.model.common.Food;
-import seedu.homechef.model.menu.Price;
+import seedu.homechef.model.common.Price;
 
 public class EditMenuCommandParserTest {
 

@@ -10,6 +10,7 @@ import java.util.Set;
 
 import seedu.homechef.commons.util.ToStringBuilder;
 import seedu.homechef.model.common.Food;
+import seedu.homechef.model.common.Price;
 
 /**
  * Represents a Order in the HomeChef.

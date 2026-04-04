@@ -30,6 +30,7 @@ import seedu.homechef.logic.Messages;
 import seedu.homechef.logic.commands.exceptions.CommandException;
 import seedu.homechef.model.Model;
 import seedu.homechef.model.common.Food;
+import seedu.homechef.model.common.Price;
 import seedu.homechef.model.menu.MenuItem;
 import seedu.homechef.model.order.Address;
 import seedu.homechef.model.order.CompletionStatus;
@@ -41,7 +42,6 @@ import seedu.homechef.model.order.Order;
 import seedu.homechef.model.order.PaymentInfo;
 import seedu.homechef.model.order.PaymentStatus;
 import seedu.homechef.model.order.Phone;
-import seedu.homechef.model.order.Price;
 
 /**
  * Edits the details of an existing order in the HomeChef.

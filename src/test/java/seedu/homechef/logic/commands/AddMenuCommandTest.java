@@ -19,9 +19,9 @@ import seedu.homechef.model.Model;
 import seedu.homechef.model.ReadOnlyHomeChef;
 import seedu.homechef.model.ReadOnlyUserPrefs;
 import seedu.homechef.model.common.Food;
+import seedu.homechef.model.common.Price;
 import seedu.homechef.model.menu.MenuBook;
 import seedu.homechef.model.menu.MenuItem;
-import seedu.homechef.model.menu.Price;
 import seedu.homechef.model.menu.ReadOnlyMenuBook;
 import seedu.homechef.model.order.Order;
 

@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 import seedu.homechef.logic.Messages;
 import seedu.homechef.logic.commands.AddMenuCommand;
 import seedu.homechef.model.common.Food;
+import seedu.homechef.model.common.Price;
 import seedu.homechef.model.menu.MenuItem;
-import seedu.homechef.model.menu.Price;
 
 public class AddMenuCommandParserTest {
 

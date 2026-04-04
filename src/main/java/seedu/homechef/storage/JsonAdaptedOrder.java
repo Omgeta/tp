@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.homechef.commons.exceptions.IllegalValueException;
 import seedu.homechef.model.common.Food;
+import seedu.homechef.model.common.Price;
 import seedu.homechef.model.order.Address;
 import seedu.homechef.model.order.CompletionStatus;
 import seedu.homechef.model.order.Customer;
@@ -22,7 +23,6 @@ import seedu.homechef.model.order.PaymentInfo;
 import seedu.homechef.model.order.PaymentStatus;
 import seedu.homechef.model.order.PaymentType;
 import seedu.homechef.model.order.Phone;
-import seedu.homechef.model.order.Price;
 import seedu.homechef.model.order.Quantity;
 
 /**

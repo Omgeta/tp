@@ -269,7 +269,7 @@ public class AddCommandTest {
             MenuBook menuBook = new MenuBook();
             menuBook.addMenuItem(new MenuItem(
                     new Food("Birthday Cake"),
-                    new seedu.homechef.model.menu.Price("25.00"), true));
+                    new seedu.homechef.model.common.Price("25.00"), true));
             return menuBook;
         }
     }
@@ -302,7 +302,7 @@ public class AddCommandTest {
             MenuBook menuBook = new MenuBook();
             menuBook.addMenuItem(new MenuItem(
                     new Food("Birthday Cake"),
-                    new seedu.homechef.model.menu.Price("25.00"), true));
+                    new seedu.homechef.model.common.Price("25.00"), true));
             return menuBook;
         }
 
@@ -311,7 +311,7 @@ public class AddCommandTest {
             ObservableList<MenuItem> list = observableArrayList();
             list.add(new MenuItem(
                     new Food("Birthday Cake"),
-                    new seedu.homechef.model.menu.Price("25.00"), true));
+                    new seedu.homechef.model.common.Price("25.00"), true));
             return list;
         }
     }

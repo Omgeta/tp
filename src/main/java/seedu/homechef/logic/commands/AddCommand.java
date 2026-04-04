@@ -23,9 +23,9 @@ import seedu.homechef.logic.Messages;
 import seedu.homechef.logic.commands.exceptions.CommandException;
 import seedu.homechef.model.Model;
 import seedu.homechef.model.common.Food;
+import seedu.homechef.model.common.Price;
 import seedu.homechef.model.menu.MenuItem;
 import seedu.homechef.model.order.Order;
-import seedu.homechef.model.order.Price;
 import seedu.homechef.model.order.Quantity;
 
 /**

@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.homechef.commons.exceptions.IllegalValueException;
 import seedu.homechef.model.common.Food;
+import seedu.homechef.model.common.Price;
 import seedu.homechef.model.menu.MenuItem;
-import seedu.homechef.model.menu.Price;
 
 /**
  * Jackson-friendly version of {@link MenuItem}.

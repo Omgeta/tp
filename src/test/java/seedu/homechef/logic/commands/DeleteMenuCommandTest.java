@@ -21,8 +21,8 @@ import seedu.homechef.model.Model;
 import seedu.homechef.model.ReadOnlyHomeChef;
 import seedu.homechef.model.ReadOnlyUserPrefs;
 import seedu.homechef.model.common.Food;
+import seedu.homechef.model.common.Price;
 import seedu.homechef.model.menu.MenuItem;
-import seedu.homechef.model.menu.Price;
 import seedu.homechef.model.menu.ReadOnlyMenuBook;
 import seedu.homechef.model.order.Order;
 
@@ -76,82 +76,102 @@ public class DeleteMenuCommandTest {
         public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public ReadOnlyUserPrefs getUserPrefs() {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public GuiSettings getGuiSettings() {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public void setGuiSettings(GuiSettings guiSettings) {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public Path getHomeChefFilePath() {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public void setHomeChefFilePath(Path homeChefFilePath) {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public void addOrder(Order order) {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public void setHomeChef(ReadOnlyHomeChef newData) {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public ReadOnlyHomeChef getHomeChef() {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public boolean hasOrder(Order order) {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public void deleteOrder(Order target) {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public void setOrder(Order target, Order editedOrder) {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public ObservableList<Order> getFilteredOrderList() {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public void updateFilteredOrderList(Predicate<Order> predicate) {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public boolean hasMenuItem(MenuItem menuItem) {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public void addMenuItem(MenuItem menuItem) {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public void deleteMenuItem(MenuItem menuItem) {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public void setMenuItem(MenuItem target, MenuItem editedItem) {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public ReadOnlyMenuBook getMenuBook() {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public ObservableList<MenuItem> getFilteredMenuItemList() {
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public void updateFilteredMenuItemList(Predicate<MenuItem> predicate) {
             throw new AssertionError("This method should not be called.");

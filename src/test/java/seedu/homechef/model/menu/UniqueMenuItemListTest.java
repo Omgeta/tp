@@ -7,6 +7,7 @@ import static seedu.homechef.testutil.Assert.assertThrows;
 import org.junit.jupiter.api.Test;
 
 import seedu.homechef.model.common.Food;
+import seedu.homechef.model.common.Price;
 import seedu.homechef.model.menu.exceptions.DuplicateMenuItemException;
 import seedu.homechef.model.menu.exceptions.MenuItemNotFoundException;
 

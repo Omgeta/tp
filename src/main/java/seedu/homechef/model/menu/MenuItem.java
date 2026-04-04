@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import seedu.homechef.commons.util.ToStringBuilder;
 import seedu.homechef.model.common.Food;
+import seedu.homechef.model.common.Price;
 
 /**
  * Represents a MenuItem in the menu.

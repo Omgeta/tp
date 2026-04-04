@@ -10,8 +10,8 @@ import java.util.stream.Stream;
 import seedu.homechef.logic.commands.AddMenuCommand;
 import seedu.homechef.logic.parser.exceptions.ParseException;
 import seedu.homechef.model.common.Food;
+import seedu.homechef.model.common.Price;
 import seedu.homechef.model.menu.MenuItem;
-import seedu.homechef.model.menu.Price;
 
 /**
  * Parses input arguments and creates a new AddMenuCommand object.

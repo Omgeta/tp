@@ -13,8 +13,8 @@ import seedu.homechef.model.Model;
 import seedu.homechef.model.ModelManager;
 import seedu.homechef.model.UserPrefs;
 import seedu.homechef.model.common.Food;
+import seedu.homechef.model.common.Price;
 import seedu.homechef.model.menu.MenuItem;
-import seedu.homechef.model.menu.Price;
 import seedu.homechef.model.order.Phone;
 import seedu.homechef.testutil.TypicalMenuItems;
 
